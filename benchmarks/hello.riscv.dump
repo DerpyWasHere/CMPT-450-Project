@@ -1,0 +1,25 @@
+
+hello.riscv.bin:     file format elf64-littleriscv
+
+
+Disassembly of section .data:
+
+0000000000000000 <__DATA_BEGIN__>:
+   0:	734d                	lui	t1,0xffff3
+   2:	0a312d67          	0xa312d67
+
+0000000000000006 <msg2>:
+   6:	734d                	lui	t1,0xffff3
+   8:	0a322d67          	0xa322d67
+
+Disassembly of section .text:
+
+0000000000001000 <_start>:
+    1000:	00100513          	li	a0,1
+    1004:	00000593          	li	a1,0
+    1008:	00500613          	li	a2,5
+    100c:	04000893          	li	a7,64
+    1010:	00000073          	ecall
+    1014:	00000513          	li	a0,0
+    1018:	05d00893          	li	a7,93
+    101c:	00000073          	ecall

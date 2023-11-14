@@ -1,0 +1,78 @@
+
+array.riscv.bin:     file format elf64-littleriscv
+
+
+Disassembly of section .data:
+
+0000000000000000 <__DATA_BEGIN__>:
+   0:	2d2d                	addiw	s10,s10,11
+   2:	522d                	li	tp,-21
+   4:	6542494f          	0x6542494f
+   8:	2d6e6967          	0x2d6e6967
+   c:	2d2d                	addiw	s10,s10,11
+   e:	                	fld	fs10,128(sp)
+
+000000000000000f <msg2>:
+   f:	2d2d                	addiw	s10,s10,11
+  11:	522d                	li	tp,-21
+  13:	6e45494f          	fnmadd.q	fs2,fa0,ft4,fa3,rmm
+  17:	2d64                	fld	fs1,216(a0)
+  19:	2d2d                	addiw	s10,s10,11
+  1b:	0a0a                	slli	s4,s4,0x2
+  1d:	                	lw	t1,128(sp)
+
+000000000000001e <character>:
+  1e:	79706f43          	fmadd.s	ft10,ft0,fs7,fa5,unknown
+  22:	2020                	fld	fs0,64(s0)
+  24:	                	slli	sp,sp,0x2
+
+0000000000000025 <src>:
+  25:	0001                	nop
+  27:	0000                	unimp
+  29:	0002                	c.slli64	zero
+  2b:	0000                	unimp
+  2d:	00000003          	lb	zero,0(zero) # 0 <__DATA_BEGIN__>
+  31:	0004                	0x4
+  33:	0000                	unimp
+  35:	0005                	c.nop	1
+  37:	0000                	unimp
+
+0000000000000039 <dst>:
+  39:	0000                	unimp
+  3b:	0000                	unimp
+  3d:	0000                	unimp
+  3f:	0000                	unimp
+  41:	0000                	unimp
+  43:	0000                	unimp
+  45:	0000                	unimp
+  47:	0000                	unimp
+  49:	0000                	unimp
+  4b:	0000                	unimp
+
+Disassembly of section .text:
+
+0000000000001000 <_start>:
+    1000:	00100513          	li	a0,1
+    1004:	00000593          	li	a1,0
+    1008:	00f00613          	li	a2,15
+    100c:	04000893          	li	a7,64
+    1010:	00000073          	ecall
+    1014:	00500293          	li	t0,5
+    1018:	02500313          	li	t1,37
+    101c:	03900393          	li	t2,57
+
+0000000000001020 <loop>:
+    1020:	00032e83          	lw	t4,0(t1)
+    1024:	01d3a023          	sw	t4,0(t2)
+    1028:	00430313          	addi	t1,t1,4
+    102c:	00438393          	addi	t2,t2,4
+    1030:	fff28293          	addi	t0,t0,-1
+    1034:	fe0296e3          	bnez	t0,1020 <loop>
+    1038:	00100513          	li	a0,1
+    103c:	00f00593          	li	a1,15
+    1040:	00f00613          	li	a2,15
+    1044:	04000893          	li	a7,64
+    1048:	00000073          	ecall
+    104c:	00000513          	li	a0,0
+    1050:	05d00893          	li	a7,93
+    1054:	00000073          	ecall

@@ -1,0 +1,100 @@
+
+quicksort.riscv.bin:     file format elf64-littleriscv
+
+
+Disassembly of section .data:
+
+0000000000000000 <__DATA_BEGIN__>:
+   0:	0105                	addi	sp,sp,1
+   2:	0a080703          	lb	a4,160(a6)
+   6:	                	lw	a6,64(sp)
+
+0000000000000007 <msg>:
+   7:	6548                	ld	a0,136(a0)
+   9:	6c6c                	ld	a1,216(s0)
+   b:	          	j	b <msg+0x4>
+
+Disassembly of section .text:
+
+0000000000001000 <quicksort>:
+    1000:	04c6ca63          	blt	a3,a2,1054 <quicksort_exit>
+    1004:	fe010113          	addi	sp,sp,-32
+    1008:	00113023          	sd	ra,0(sp)
+    100c:	01a13423          	sd	s10,8(sp)
+    1010:	01b13823          	sd	s11,16(sp)
+    1014:	01913c23          	sd	s9,24(sp)
+    1018:	00060d13          	mv	s10,a2
+    101c:	00068d93          	mv	s11,a3
+    1020:	038000ef          	jal	ra,1058 <partition>
+    1024:	00050c93          	mv	s9,a0
+    1028:	fffc8693          	addi	a3,s9,-1
+    102c:	000d0613          	mv	a2,s10
+    1030:	fd1ff0ef          	jal	ra,1000 <quicksort>
+    1034:	001c8613          	addi	a2,s9,1
+    1038:	000d8693          	mv	a3,s11
+    103c:	fc5ff0ef          	jal	ra,1000 <quicksort>
+    1040:	00013083          	ld	ra,0(sp)
+    1044:	00813d03          	ld	s10,8(sp)
+    1048:	01013d83          	ld	s11,16(sp)
+    104c:	01813c83          	ld	s9,24(sp)
+    1050:	02010113          	addi	sp,sp,32
+
+0000000000001054 <quicksort_exit>:
+    1054:	00008067          	ret
+
+0000000000001058 <partition>:
+    1058:	fe810113          	addi	sp,sp,-24
+    105c:	00113023          	sd	ra,0(sp)
+    1060:	01a13423          	sd	s10,8(sp)
+    1064:	01b13823          	sd	s11,16(sp)
+    1068:	00d582b3          	add	t0,a1,a3
+    106c:	0002c283          	lbu	t0,0(t0)
+    1070:	fff60393          	addi	t2,a2,-1
+    1074:	00060f93          	mv	t6,a2
+    1078:	fff68f13          	addi	t5,a3,-1
+
+000000000000107c <partition_forloop>:
+    107c:	03ff4663          	blt	t5,t6,10a8 <partition_forloop_end>
+    1080:	01f58db3          	add	s11,a1,t6
+    1084:	000dc303          	lbu	t1,0(s11)
+    1088:	0062ec63          	bltu	t0,t1,10a0 <partition_forloop_inner_skip>
+    108c:	00138393          	addi	t2,t2,1
+    1090:	00758d33          	add	s10,a1,t2
+    1094:	000d4e03          	lbu	t3,0(s10)
+    1098:	01cd8023          	sb	t3,0(s11)
+    109c:	006d0023          	sb	t1,0(s10)
+
+00000000000010a0 <partition_forloop_inner_skip>:
+    10a0:	001f8f93          	addi	t6,t6,1
+    10a4:	fd9ff06f          	j	107c <partition_forloop>
+
+00000000000010a8 <partition_forloop_end>:
+    10a8:	00138513          	addi	a0,t2,1
+    10ac:	00a58d33          	add	s10,a1,a0
+    10b0:	00d58db3          	add	s11,a1,a3
+    10b4:	000d4383          	lbu	t2,0(s10)
+    10b8:	000dce03          	lbu	t3,0(s11)
+    10bc:	007d8023          	sb	t2,0(s11)
+    10c0:	01cd0023          	sb	t3,0(s10)
+    10c4:	00013083          	ld	ra,0(sp)
+    10c8:	00813d03          	ld	s10,8(sp)
+    10cc:	01013d83          	ld	s11,16(sp)
+    10d0:	01810113          	addi	sp,sp,24
+
+00000000000010d4 <partition_bail>:
+    10d4:	00008067          	ret
+
+00000000000010d8 <_start>:
+    10d8:	00100513          	li	a0,1
+    10dc:	00700593          	li	a1,7
+    10e0:	00500613          	li	a2,5
+    10e4:	04000893          	li	a7,64
+    10e8:	00000073          	ecall
+    10ec:	00000593          	li	a1,0
+    10f0:	00000613          	li	a2,0
+    10f4:	00000697          	auipc	a3,0x0
+    10f8:	0186c683          	lbu	a3,24(a3) # 110c <arrsize>
+    10fc:	fff68693          	addi	a3,a3,-1
+    1100:	f01ff0ef          	jal	ra,1000 <quicksort>
+    1104:	05d00893          	li	a7,93
+    1108:	00000073          	ecall
