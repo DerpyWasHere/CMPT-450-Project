@@ -46,30 +46,32 @@ Thus, the number of bits needed to represent a weight is one (for the sign bit) 
 */
 
 
-/* /////////////////// DESIGN CHOICE *SUBJECT TO CHANGE* ///////////////////
-    Threshold size: 128 so weights can be uint_8t
+/* 
+    Threshold size: 128 so weights can be int_8t
         8 bits total for weight: Number of bits needed for threshold: 7 bits. We need one bit for sign of weight, so 8 bits total for weights
-    
-    Table of perceptrons, so i think an array of perceptrons is the right implementation
-        Championship predictor has 4 tables of weights, i think respresenting 4 layers
-            INQUIRY: Do we make a perceptron object/struct and include the weights in the object/struct?
-                        - This would allow us to vary neural layer #'s easily
-                     Or do we make 4 hardcoded tables with weights and history in a singular 2D array like championship *SPEAK WITH SEAN*
-    History register is array of booleans
+
+    Global history length GHL: Paper said best lengths were 12-62, so let's start with 32
+    Global history address GHR: bool pointer* in array of length GHL
+
+    Weight table WT: 2D int8_t array stores our weights, size [2^(# of weights)][History length]
+    Weight length WL: History length, 20 size is based of WL_1 in championship
+
+    ******SEAN LOOKIE HERE*********** confirm or deny 
+    Addr: Can be uint_32 like in championship pred 
+    What is thread pointer?
 */
 
 #include <limits.h>
 #include <inttypes.h>
 #include "cpu/pred/perceptron.hh"
 
+#define NUMBER_OF_WEIGHTS 10 
+#define GHL 32 
 #define THRESHOLD 128
-#define NUMBER_OF_WEIGHTS 10 // Number of weights in each perceptron/table *Depending on implementation*
-#define GHL 128 
-
-// TO DO: Decide on perceptron implementation and how to store the weights. 
-// Check INQUIRY in DESIGN CHOICE 
+#define WL 20 
 
 bool *GHR;
+int8_t WT[1<<NUMBER_OF_WEIGHTS][WL_1]
 
 void Initalize_Predictor()
 {
@@ -79,7 +81,14 @@ void Initalize_Predictor()
 // Resetting model. Do this to change config
 void Reset_Predictor()
 {
-
+    for (int i = 0; i < (1<<NUMBER_OF_WEIGHTS); i++) 
+    {
+        for(int j = 0; j < WL; j++)
+        {
+            WT[i][j] = 0;
+            WT[i][j] = 0;
+	    }
+    }
 }
 
 int8_t Perceptron_Output()
