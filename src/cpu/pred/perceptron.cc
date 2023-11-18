@@ -71,11 +71,25 @@ Thus, the number of bits needed to represent a weight is one (for the sign bit) 
 #define WL 20 
 
 bool *GHR;
-int8_t WT[1<<NUMBER_OF_WEIGHTS][WL_1]
+int8_t WT[1<<NUMBER_OF_WEIGHTS][WL_LOCAL]
 
 void Initalize_Predictor()
 {
     GHR = new bool[GHL];
+}
+
+// Weight table lookup
+// Needs to return an index from 0 to (2^wt_size) for the first index in WT 
+// STEP 1 IN ALGO DETAILED IN 3.5 ABOVE 
+uint32_t Weight_Hash(uint32_t pc, uint32_t branch, uint32_t wt_size)
+{
+    // This should be an alright hash function? I kinda just did this randomly
+    // I don't think this should have too much aliasing/collisions 
+
+    uint32_t temp = branch | (pc << wt_size); 
+    temp = ~temp;
+    temp = temp % (1<<wt_size);
+    return temp 
 }
 
 // Resetting model. Do this to change config
@@ -101,10 +115,34 @@ int8_t Perceptron_Output()
 
 // Returns taken or not taken based on a given branch and PC. 
 // Counter data + branch history are backed up in case we need to restore history/change PC.
+// STEP 2-4 IN 3.5 ALGO DETAILED ABOVE
 bool
-PerceptronBP::lookup(ThreadID tid, Addr branchAddr, void * &bpHistory)
+// I could be wrong about this just but i think we only need branchAddr and threadid, weight table is global
+PerceptronBP::lookup(ThreadID tid, uint32_t branch, void * &bpHistory)
 {
-    return 0;
+    // HOW TO GET PC IN CHAMPSIM??
+    uint32_t pc = 0x1eeee000; // believe me bro ********FIX ME*********** 
+    uint32_t index = Weight_Hash(pc, branch, NUMBER_OF_WEIGHTS);
+
+    // Do it for our only table currently 
+    uint32_t y = 0;
+    // STEP 2-3
+    for(unsigned int i = 0; i < WL; i++)
+    {
+        if(GHR[i] == 1)
+        {
+            y += WT[index][i];
+        }
+        else // GHR[i] == 0 so -1
+        {
+            y += -WT[index][i];
+        }
+    }
+    // Add 1 for weight bias (because paper said so)
+    y++;
+    // STEP 4
+    if(y < 0) return 0;
+    else return 1;
 }
 
 // Called on unconditional branch instructions. Unconditional branches are always taken.
@@ -123,6 +161,7 @@ PerceptronBP::btbUpdate(ThreadID tid, Addr branch_addr, void* &bp_history)
 }
 
 // Update branch predictor counters. squashed implies whether update is called during a squash call.
+// This needs to update and tweak weight training model 
 void 
 PerceptronBP::update(ThreadID tid, Addr branch_addr, bool taken, void *bp_history,
                     bool squashed, const StaticInstPtr & inst, Addr corrTarget)
