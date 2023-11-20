@@ -69,11 +69,7 @@ Thus, the number of bits needed to represent a weight is one (for the sign bit) 
 #define THRESHOLD 128
 #define WL 20 
 
-bool *GHR;
-int8_t WT[1<<NUMBER_OF_WEIGHTS][WL]
-uint8_t threshold = 0; // Dynamic threshold to compare aganist hard coded max in define 
-
-void Initalize_Predictor()
+PerceptronBP::PerceptronBP(const PerceptronBPParams *params)
 {
     GHR = new bool[GHL];
 }
@@ -81,12 +77,10 @@ void Initalize_Predictor()
 // Weight table lookup
 // Needs to return an index from 0 to (2^wt_size) for the first index in WT 
 // STEP 1 IN ALGO DETAILED IN 3.5 ABOVE 
-uint32_t Weight_Hash(uint32_t pc, uint32_t branch, uint32_t wt_size)
+uint64_t 
+PerceptronBP::weight_hash(Addr pc, uint32_t wt_size)
 {
-    uint32_t temp = branch | (pc << wt_size); 
-    temp = ~temp;
-    temp = temp % (1<<wt_size);
-    return temp 
+    return pc % wt_size; // Take simple mod of wt_size
 }
 
 // Resetting model. Do this to change config
@@ -102,6 +96,7 @@ void Reset_Predictor()
     }
 }
 
+// no need for this function? -- remove later
 int8_t Perceptron_Output()
 {
     // Get 10 (NUMBER_OF_WEIGHTS) inputs from GHR and dot it with weights
@@ -112,14 +107,16 @@ int8_t Perceptron_Output()
 
 // Returns taken or not taken based on a given branch and PC. 
 // Counter data + branch history are backed up in case we need to restore history/change PC.
-bool
 // STEP 2-4 IN 3.5 ALGO DETAILED ABOVE
 // I could be wrong about this just but i think we only need branchAddr and threadid, weight table is global
+// -S: you were right i think, p sure tid can be used to index a specific thread's weight table, see bi_mode.cc.
 // Also aren't perceptron_output and lookup doing the same thing? just predicting the branch? 
-PerceptronBP::lookup(ThreadID tid, uint32_t branch, void * &bpHistory)
+// -S: lookup also has to record the history, so not quite AFAIK.
+bool
+PerceptronBP::lookup(ThreadID tid, Addr branch_addr, void * &bpHistory)
 {
-    uint32_t pc = 0x1eeee000; // HOW TO GET PC IN CHAMPSIM?? ********FIX ME*********** 
-    uint32_t index = Weight_Hash(pc, branch, NUMBER_OF_WEIGHTS);
+    
+    uint64_t index = weight_hash(branch_addr, NUMBER_OF_WEIGHTS);
 
     // Do it for our only table currently 
     uint32_t y = 0;
@@ -174,9 +171,9 @@ PerceptronBP::update(ThreadID tid, Addr branch_addr, bool taken, void *bp_histor
     if(taken) t = 1;
     else t = -1;
 
-    uint32_t index = Weight_Hash(pc, branch, NUMBER_OF_WEIGHTS);
+    uint32_t index = weight_hash(branch_addr, NUMBER_OF_WEIGHTS);
 
-    if (lookup(ThreadID, branch_addr, ) != t || lookup(ThreadID, branch_addr, ) < threshold)
+    if (lookup(tid, branch_addr, ) != t || lookup(tid, branch_addr, ) < threshold)
     {
         for(unsigned int i = 0; i < n; i++)
         {
