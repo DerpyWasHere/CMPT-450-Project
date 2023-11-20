@@ -45,7 +45,6 @@ Thus, the number of bits needed to represent a weight is one (for the sign bit) 
         6. P is written back to the ith entry in the table
 */
 
-
 /* 
     Threshold size: 128 so weights can be int_8t
         8 bits total for weight: Number of bits needed for threshold: 7 bits. We need one bit for sign of weight, so 8 bits total for weights
@@ -71,7 +70,8 @@ Thus, the number of bits needed to represent a weight is one (for the sign bit) 
 #define WL 20 
 
 bool *GHR;
-int8_t WT[1<<NUMBER_OF_WEIGHTS][WL_LOCAL]
+int8_t WT[1<<NUMBER_OF_WEIGHTS][WL]
+uint8_t threshold = 0; // Dynamic threshold to compare aganist hard coded max in define 
 
 void Initalize_Predictor()
 {
@@ -83,9 +83,6 @@ void Initalize_Predictor()
 // STEP 1 IN ALGO DETAILED IN 3.5 ABOVE 
 uint32_t Weight_Hash(uint32_t pc, uint32_t branch, uint32_t wt_size)
 {
-    // This should be an alright hash function? I kinda just did this randomly
-    // I don't think this should have too much aliasing/collisions 
-
     uint32_t temp = branch | (pc << wt_size); 
     temp = ~temp;
     temp = temp % (1<<wt_size);
@@ -115,13 +112,13 @@ int8_t Perceptron_Output()
 
 // Returns taken or not taken based on a given branch and PC. 
 // Counter data + branch history are backed up in case we need to restore history/change PC.
-// STEP 2-4 IN 3.5 ALGO DETAILED ABOVE
 bool
+// STEP 2-4 IN 3.5 ALGO DETAILED ABOVE
 // I could be wrong about this just but i think we only need branchAddr and threadid, weight table is global
+// Also aren't perceptron_output and lookup doing the same thing? just predicting the branch? 
 PerceptronBP::lookup(ThreadID tid, uint32_t branch, void * &bpHistory)
 {
-    // HOW TO GET PC IN CHAMPSIM??
-    uint32_t pc = 0x1eeee000; // believe me bro ********FIX ME*********** 
+    uint32_t pc = 0x1eeee000; // HOW TO GET PC IN CHAMPSIM?? ********FIX ME*********** 
     uint32_t index = Weight_Hash(pc, branch, NUMBER_OF_WEIGHTS);
 
     // Do it for our only table currently 
@@ -140,6 +137,7 @@ PerceptronBP::lookup(ThreadID tid, uint32_t branch, void * &bpHistory)
     }
     // Add 1 for weight bias (because paper said so)
     y++;
+
     // STEP 4
     if(y < 0) return 0;
     else return 1;
@@ -165,8 +163,26 @@ PerceptronBP::btbUpdate(ThreadID tid, Addr branch_addr, void* &bp_history)
 void 
 PerceptronBP::update(ThreadID tid, Addr branch_addr, bool taken, void *bp_history,
                     bool squashed, const StaticInstPtr & inst, Addr corrTarget)
+// GHR and weight table is public so *bp_History isn't required i dont think 
 {
+    // if sign(yout) != t or |yout| < THRESHOLD then
+        // for i := 0 to n do
+        // wi := wi + txi
+        // end for
+    // end if
+    unsigned int t = 0;
+    if(taken) t = 1;
+    else t = -1;
 
+    uint32_t index = Weight_Hash(pc, branch, NUMBER_OF_WEIGHTS);
+
+    if (lookup(ThreadID, branch_addr, ) != t || lookup(ThreadID, branch_addr, ) < threshold)
+    {
+        for(unsigned int i = 0; i < n; i++)
+        {
+            WT[index][i] += t*WT[index][i];
+        }
+    }
 }
 
 // When we mispredict a branch, we revert state to before the mispredicted branch instruction was issued.
