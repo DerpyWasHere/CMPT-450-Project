@@ -756,6 +756,5 @@ class Perceptron(BranchPredictor):
     cxx_header = 'cpu/pred/perceptron.hh'
 
     number_of_weights = 10
-    ghl = 32
+    number_of_perceptrons = 10
     threshold = 128
-    wl = 20
