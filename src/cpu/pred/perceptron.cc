@@ -56,31 +56,29 @@ Thus, the number of bits needed to represent a weight is one (for the sign bit) 
     Weight length WL: History length, 20 size is based of WL_1 in championship
 
     ******SEAN LOOKIE HERE*********** confirm or deny 
-    Addr: Can be uint_32 like in championship pred 
-    What is thread pointer?
+    Addr: Can be uint_32 like in championship pred -> deny
+    What is thread pointer? -> unsure
 */
 
 #include <limits.h>
 #include <inttypes.h>
 #include "cpu/pred/perceptron.hh"
 
-#define NUMBER_OF_WEIGHTS 10 
-#define GHL 32 
-#define THRESHOLD 128
-#define WL 20 
-
 PerceptronBP::PerceptronBP(const PerceptronBPParams *params)
 {
-    GHR = new bool[GHL];
+    number_of_perceptrons = params->number_of_perceptrons;
+    number_of_weights = params->number_of_weights;
+    global_history_bits = params->global_history_bits;
+    history_mask = mask(global_history_bits);
 }
 
 // Weight table lookup
 // Needs to return an index from 0 to (2^wt_size) for the first index in WT 
 // STEP 1 IN ALGO DETAILED IN 3.5 ABOVE 
 uint64_t 
-PerceptronBP::weight_hash(Addr pc, uint32_t wt_size)
+PerceptronBP::weight_hash(Addr pc, uint32_t num_perceptron)
 {
-    return pc % wt_size; // Take simple mod of wt_size
+    return pc % num_perceptron; // Take simple mod of wt_size
 }
 
 // Resetting model. Do this to change config
@@ -105,6 +103,22 @@ int8_t Perceptron_Output()
     return -1;
 }
 
+inline
+void
+PerceptronBP::updateGlobalHistTaken(ThreadID tid)
+{
+    globalHistory[tid] = (globalHistory[tid] << 1) | 1;
+    globalHistory[tid] = globalHistory[tid] & history_mask;
+}
+
+inline
+void
+PerceptronBP::updateGlobalHistNotTaken(ThreadID tid)
+{
+    globalHistory[tid] = (globalHistory[tid] << 1);
+    globalHistory[tid] = globalHistory[tid] & history_mask;
+}
+
 // Returns taken or not taken based on a given branch and PC. 
 // Counter data + branch history are backed up in case we need to restore history/change PC.
 // STEP 2-4 IN 3.5 ALGO DETAILED ABOVE
@@ -113,31 +127,37 @@ int8_t Perceptron_Output()
 // Also aren't perceptron_output and lookup doing the same thing? just predicting the branch? 
 // -S: lookup also has to record the history, so not quite AFAIK.
 bool
-PerceptronBP::lookup(ThreadID tid, Addr branch_addr, void * &bpHistory)
+PerceptronBP::lookup(ThreadID tid, Addr branch_addr, void * &bp_history)
 {
     
-    uint64_t index = weight_hash(branch_addr, NUMBER_OF_WEIGHTS);
+    uint64_t perceptron_index = weight_hash(branch_addr, number_of_weights);
+    bool history = globalHistory[tid];
 
-    // Do it for our only table currently 
-    uint32_t y = 0;
+    int32_t y = weights[perceptron_index][0];
     // STEP 2-3
-    for(unsigned int i = 0; i < WL; i++)
+    // Compute dot product
+    for(unsigned int i = 0; i < number_of_weights; i++)
     {
-        if(GHR[i] == 1)
-        {
-            y += WT[index][i];
-        }
-        else // GHR[i] == 0 so -1
-        {
-            y += -WT[index][i];
-        }
+        if(history == 1)
+            y += weights[perceptron_index][i]; // GHR[i] == 1 so 1
+        else y -= weights[perceptron_index][i]; // GHR[i] == 0 so -1
     }
-    // Add 1 for weight bias (because paper said so)
-    y++;
-
+    
     // STEP 4
-    if(y < 0) return 0;
-    else return 1;
+    bool prediction = (y >= 0) ? true : false;
+
+    // Record history
+    BPHistory *hist = new BPHistory;
+    history->globalHistory = globalHistory[tid];
+    history->globalPredTaken = prediction;
+    bp_history = (void*) hist;
+
+    // Update history
+    if(prediction)
+        updateGlobalHistTaken(tid);
+    else updateGlobalHistNotTaken(tid);
+
+    return prediction;
 }
 
 // Called on unconditional branch instructions. Unconditional branches are always taken.
@@ -152,7 +172,7 @@ PerceptronBP::uncondBranch(ThreadID tid, Addr br_pc, void* &bp_history)
 void 
 PerceptronBP::btbUpdate(ThreadID tid, Addr branch_addr, void* &bp_history)
 {
-
+    
 }
 
 // Update branch predictor counters. squashed implies whether update is called during a squash call.
