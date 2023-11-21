@@ -1,27 +1,34 @@
+#include "base/bitfield.hh"
+#include "base/circular_queue.hh
 #include "base/types.hh"
 #include "cpu/pred/bpred_unit.hh"
 #include "params/Perceptron.hh"
 
-#define NUMBER_OF_WEIGHTS 10 
-#define GHL 32 
-#define THRESHOLD 128
-#define WL 20 
-
 class PerceptronBP : public BPredUnit
 {
     private:
-        bool *GHR;
-        int8_t WT[1<<NUMBER_OF_WEIGHTS][WL];
+        //bool *GHR;
+        //int8_t WT[1<<NUMBER_OF_WEIGHTS][WL];
         uint8_t threshold = 0; // Dynamic threshold to compare aganist hard coded max in define 
+        
+        std::vector<bool> globalHistory;
+        std::vector<std::vector<int8_t>> weights;
 
-        uint32_t num_of_weights;
-        uint32_t ghl;
+        uint32_t number_of_weights;
+        uint32_t number_of_perceptrons;
+        uint32_t global_history_bits;
+        uint64_t history_mask; // max 64 bits
         uint32_t wl;
 
-        uint64_t weight_hash(Addr pc, uint32_t wt_size);
+        uint64_t weight_hash(Addr pc, uint32_t num_perceptrons);
         bool predict();
 
     public:
+        struct BPHistory {
+            unsigned globalHistory;
+            bool globalPredTaken;
+        }
+
         PerceptronBP(const PerceptronBPParams *params);
 
         bool lookup(ThreadID tid, Addr branch_addr, void* &bp_history) override;
