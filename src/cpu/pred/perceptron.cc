@@ -164,7 +164,13 @@ PerceptronBP::lookup(ThreadID tid, Addr branch_addr, void * &bp_history)
 void 
 PerceptronBP::uncondBranch(ThreadID tid, Addr br_pc, void* &bp_history)
 {
+    // This is from referenced from tournament
+    BPHistory *history = new BPHistory;
+    history->globalHistory = globalHistory[tid];
+    history->globalPredTaken = true;
+    bp_history = (void*) hist;
 
+    updateGlobalHistTaken(tid);
 }
 
 // Called when there is a miss in the Branch Target buffer. Branch prediction does not know where
@@ -172,7 +178,8 @@ PerceptronBP::uncondBranch(ThreadID tid, Addr br_pc, void* &bp_history)
 void 
 PerceptronBP::btbUpdate(ThreadID tid, Addr branch_addr, void* &bp_history)
 {
-    
+    updateGlobalHistNotTaken(ThreadID tid); 
+    // I don't think we need more than this function call as we have only one history table
 }
 
 // Update branch predictor counters. squashed implies whether update is called during a squash call.
@@ -206,5 +213,8 @@ PerceptronBP::update(ThreadID tid, Addr branch_addr, bool taken, void *bp_histor
 void
 PerceptronBP::squash(ThreadID tid, void *bp_history)
 {
+    BPHistory *history = (BPHistory*)bpHistory;     // I think is this right syntax? Maybe not?
+    globalHistory[tid] = history->globalHistory;
 
+    delete history;
 }
