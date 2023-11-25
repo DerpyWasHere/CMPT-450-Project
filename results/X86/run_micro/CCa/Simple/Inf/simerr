@@ -1,0 +1,6 @@
+usage: run_micro.py [-h] [--clock CLOCK] [-_L1DCacheSize _L1DCACHESIZE]
+                    [-_L2CacheSize _L2CACHESIZE] [-_L1Assoc [_L1ASSOC]]
+                    [-_L2Assoc [_L2ASSOC]] [--dram [DRAM]]
+                    {Simple,Minor4,DefaultO3,O3_W256,O3_W2K}
+                    {Inf,SingleCycle,Slow} binary
+run_micro.py: error: unrecognized arguments: 64kB 1MB 8 16
