@@ -176,7 +176,7 @@ PerceptronBP::uncondBranch(ThreadID tid, Addr br_pc, void* &bp_history)
 void 
 PerceptronBP::btbUpdate(ThreadID tid, Addr branch_addr, void* &bp_history)
 {
-    
+    //BPHistory *hist = new BPHistory;
 }
 
 // Update branch predictor counters. squashed implies whether update is called during a squash call.
@@ -199,7 +199,7 @@ PerceptronBP::update(ThreadID tid, Addr branch_addr, bool taken, void *bp_histor
 
     if (lookup(tid, branch_addr, bp_history) != t || lookup(tid, branch_addr, bp_history) < threshold)
     {
-        for(unsigned int i = 0; i < n; i++)
+        for(unsigned int i = 0; i < number_of_weights; i++)
         {
             weights[index][i] += t*weights[index][i];
         }
@@ -211,4 +211,10 @@ void
 PerceptronBP::squash(ThreadID tid, void *bp_history)
 {
 
+}
+
+PerceptronBP*
+PerceptronParams::create()
+{
+    return new PerceptronBP(this);
 }
