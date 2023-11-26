@@ -64,7 +64,7 @@ Thus, the number of bits needed to represent a weight is one (for the sign bit) 
 #include <inttypes.h>
 #include "cpu/pred/perceptron.hh"
 
-PerceptronBP::PerceptronBP(const PerceptronBPParams *params)
+PerceptronBP::PerceptronBP(const PerceptronParams *params) : BPredUnit(params)
 {
     number_of_perceptrons = params->number_of_perceptrons;
     number_of_weights = params->number_of_weights;
@@ -82,17 +82,17 @@ PerceptronBP::weight_hash(Addr pc, uint32_t num_perceptron)
 }
 
 // Resetting model. Do this to change config
-void Reset_Predictor()
-{
-    for (int i = 0; i < (1<<NUMBER_OF_WEIGHTS); i++) 
-    {
-        for(int j = 0; j < WL; j++)
-        {
-            WT[i][j] = 0;
-            WT[i][j] = 0;
-	    }
-    }
-}
+// void Reset_Predictor()
+// {
+//     for (int i = 0; i < (1<<number_of_weights); i++) 
+//     {
+//         for(int j = 0; j < WL; j++)
+//         {
+//             WT[i][j] = 0;
+//             WT[i][j] = 0;
+// 	    }
+//     }
+// }
 
 // no need for this function? -- remove later
 int8_t Perceptron_Output()
@@ -164,13 +164,7 @@ PerceptronBP::lookup(ThreadID tid, Addr branch_addr, void * &bp_history)
 void 
 PerceptronBP::uncondBranch(ThreadID tid, Addr br_pc, void* &bp_history)
 {
-    // This is from referenced from tournament
-    BPHistory *history = new BPHistory;
-    history->globalHistory = globalHistory[tid];
-    history->globalPredTaken = true;
-    bp_history = (void*) hist;
 
-    updateGlobalHistTaken(tid);
 }
 
 // Called when there is a miss in the Branch Target buffer. Branch prediction does not know where
@@ -178,8 +172,7 @@ PerceptronBP::uncondBranch(ThreadID tid, Addr br_pc, void* &bp_history)
 void 
 PerceptronBP::btbUpdate(ThreadID tid, Addr branch_addr, void* &bp_history)
 {
-    updateGlobalHistNotTaken(ThreadID tid); 
-    // I don't think we need more than this function call as we have only one history table
+    
 }
 
 // Update branch predictor counters. squashed implies whether update is called during a squash call.
@@ -198,13 +191,13 @@ PerceptronBP::update(ThreadID tid, Addr branch_addr, bool taken, void *bp_histor
     if(taken) t = 1;
     else t = -1;
 
-    uint32_t index = weight_hash(branch_addr, NUMBER_OF_WEIGHTS);
+    uint32_t index = weight_hash(branch_addr, number_of_weights);
 
-    if (lookup(tid, branch_addr, ) != t || lookup(tid, branch_addr, ) < threshold)
+    if (lookup(tid, branch_addr, bp_history) != t || lookup(tid, branch_addr, bp_history) < threshold)
     {
         for(unsigned int i = 0; i < n; i++)
         {
-            WT[index][i] += t*WT[index][i];
+            weights[index][i] += t*weights[index][i];
         }
     }
 }
@@ -213,8 +206,5 @@ PerceptronBP::update(ThreadID tid, Addr branch_addr, bool taken, void *bp_histor
 void
 PerceptronBP::squash(ThreadID tid, void *bp_history)
 {
-    BPHistory *history = (BPHistory*)bpHistory;     // I think is this right syntax? Maybe not?
-    globalHistory[tid] = history->globalHistory;
 
-    delete history;
 }
