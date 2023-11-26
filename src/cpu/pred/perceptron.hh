@@ -11,7 +11,7 @@ class PerceptronBP : public BPredUnit
         //int8_t WT[1<<NUMBER_OF_WEIGHTS][WL];
         uint8_t threshold = 0; // Dynamic threshold to compare aganist hard coded max in define 
         
-        std::vector<bool> globalHistory;
+        std::vector<uint64_t> globalHistory;
         std::vector<std::vector<int8_t>> weights;
 
         uint32_t number_of_weights;
@@ -22,7 +22,7 @@ class PerceptronBP : public BPredUnit
 
         uint64_t weight_hash(Addr pc, uint32_t num_perceptrons);
         bool predict();
-        
+
         /** Updates global history as taken. */
         inline void updateGlobalHistTaken(ThreadID tid);
 
