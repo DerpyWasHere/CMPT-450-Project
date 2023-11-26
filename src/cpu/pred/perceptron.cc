@@ -186,6 +186,14 @@ PerceptronBP::update(ThreadID tid, Addr branch_addr, bool taken, void *bp_histor
                     bool squashed, const StaticInstPtr & inst, Addr corrTarget)
 // GHR and weight table is public so *bp_History isn't required i dont think 
 {
+    BPHistory *history = static_cast<BPHistory *>(bp_history);
+
+    // If squash, undo history
+    if (squashed) {
+        globalHistory[tid] = (history->globalHistory << 1) | taken;
+        return;
+    }
+
     // if sign(yout) != t or |yout| < THRESHOLD then
         // for i := 0 to n do
         // wi := wi + txi
@@ -204,13 +212,20 @@ PerceptronBP::update(ThreadID tid, Addr branch_addr, bool taken, void *bp_histor
             weights[index][i] += t*weights[index][i];
         }
     }
+
+    // After we finish, delete history
+    delete history;
 }
 
 // When we mispredict a branch, we revert state to before the mispredicted branch instruction was issued.
 void
 PerceptronBP::squash(ThreadID tid, void *bp_history)
 {
+    BPHistory *history = static_cast<BPHistory *>(bp_history);
 
+    globalHistory = history->globalHistory;
+    // Delete history once finished
+    delete history;
 }
 
 PerceptronBP*
