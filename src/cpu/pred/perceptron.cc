@@ -148,8 +148,8 @@ PerceptronBP::lookup(ThreadID tid, Addr branch_addr, void * &bp_history)
 
     // Record history
     BPHistory *hist = new BPHistory;
-    history->globalHistory = globalHistory[tid];
-    history->globalPredTaken = prediction;
+    hist->globalHistory = globalHistory[tid];
+    hist->globalPredTaken = prediction;
     bp_history = (void*) hist;
 
     // Update history
