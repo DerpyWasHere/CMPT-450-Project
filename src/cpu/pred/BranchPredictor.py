@@ -752,9 +752,9 @@ class MultiperspectivePerceptronTAGE8KB(MultiperspectivePerceptronTAGE):
 
 class Perceptron(BranchPredictor):
     type = 'PerceptronBP'
-    cxx_class = 'perceptron.cc'
+    cxx_class = 'PerceptronBP'
     cxx_header = 'cpu/pred/perceptron.hh'
 
-    number_of_weights = 10
-    number_of_perceptrons = 10
-    threshold = 128
+    number_of_weights = Param.UInt32(10, "Number of weights for the perceptron")
+    number_of_perceptrons = Param.UInt32(10, "Number of perceptrons for the predictor")
+    threshold = Param.UInt32(128, "Threshold for training the perceptrons")
