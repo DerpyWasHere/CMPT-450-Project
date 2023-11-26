@@ -223,7 +223,7 @@ PerceptronBP::squash(ThreadID tid, void *bp_history)
 {
     BPHistory *history = static_cast<BPHistory *>(bp_history);
 
-    globalHistory = history->globalHistory;
+    globalHistory[tid] = history->globalHistory;
     // Delete history once finished
     delete history;
 }
