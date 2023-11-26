@@ -164,7 +164,11 @@ PerceptronBP::lookup(ThreadID tid, Addr branch_addr, void * &bp_history)
 void 
 PerceptronBP::uncondBranch(ThreadID tid, Addr br_pc, void* &bp_history)
 {
-
+    BPHistory *hist = new BPHistory;
+    hist->globalHistory = globalHistory[tid];
+    hist->globalPredTaken = true;
+    bp_history = static_cast<void*>(hist);
+    updateGlobalHistTaken(tid);
 }
 
 // Called when there is a miss in the Branch Target buffer. Branch prediction does not know where
