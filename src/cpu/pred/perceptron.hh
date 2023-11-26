@@ -31,7 +31,7 @@ class PerceptronBP : public BPredUnit
 
     public:
         struct BPHistory {
-            unsigned globalHistory;
+            uint64_t globalHistory;
             bool globalPredTaken;
         };
 
