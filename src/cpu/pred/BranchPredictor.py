@@ -750,7 +750,7 @@ class MultiperspectivePerceptronTAGE8KB(MultiperspectivePerceptronTAGE):
     loop_predictor = MPP_LoopPredictor_8KB()
     statistical_corrector = MPP_StatisticalCorrector_8KB()
 
-class Perceptron(BranchPredictor):
+class PerceptronBP(BranchPredictor):
     type = 'PerceptronBP'
     cxx_class = 'PerceptronBP'
     cxx_header = 'cpu/pred/perceptron.hh'
