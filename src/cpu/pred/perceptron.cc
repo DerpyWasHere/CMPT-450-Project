@@ -64,7 +64,7 @@ Thus, the number of bits needed to represent a weight is one (for the sign bit) 
 #include <inttypes.h>
 #include "cpu/pred/perceptron.hh"
 
-PerceptronBP::PerceptronBP(const PerceptronParams *params) : BPredUnit(params)
+PerceptronBP::PerceptronBP(const PerceptronBPParams *params) : BPredUnit(params)
 {
     number_of_perceptrons = params->number_of_perceptrons;
     number_of_weights = params->number_of_weights;
@@ -229,7 +229,7 @@ PerceptronBP::squash(ThreadID tid, void *bp_history)
 }
 
 PerceptronBP*
-PerceptronParams::create()
+PerceptronBPParams::create()
 {
     return new PerceptronBP(this);
 }
