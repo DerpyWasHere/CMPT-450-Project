@@ -5,8 +5,8 @@ gem5 is copyrighted software; use the --copyright option for details.
 
 gem5 version 20.1.0.2
 gem5 compiled Sep 18 2021 20:01:29
-gem5 started Nov 25 2023 22:28:05
-gem5 executing on ARCH-750, pid 1563781
-command line: /data/gem5-baseline/build/X86/gem5.opt -re --outdir=/data/home/ama225/CMPT-450-Project/results/X86/run_micro/CCa/Simple/Inf gem5-config/run_micro.py Simple Inf microbenchmark/CCa/bench.X86 64kB 1MB 8 16
+gem5 started Nov 27 2023 06:39:22
+gem5 executing on ARCH-750, pid 1688575
+command line: /data/gem5-baseline/build/X86/gem5.opt -re --outdir=/data/home/ama225/CMPT-450-Project/results/X86/run_micro/CCa/Simple/Inf gem5-config/run_micro.py Simple Inf microbenchmark/CCa/bench.X86 64kB 1MB 8 16 --cpus-per-task=8 --time=60:00 --mem=1G
 
 info: Standard input is not a terminal, disabling listeners.
