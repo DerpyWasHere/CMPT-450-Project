@@ -5,14 +5,14 @@ from __future__ import print_function
 import argparse
 import m5
 from m5.objects import TimingSimpleCPU, DerivO3CPU, MinorCPU
-from m5.objects import Perceptron, SimpleMemory
+from m5.objects import PerceptronBP, SimpleMemory
 from m5.objects import Root
 from m5.objects import *
 import time
 from system import BaseTestSystem
 from system import InfMemory, SingleCycleMemory, SlowMemory
 
-BranchPredictor = PERCEPTRON
+BranchPredictor = PerceptronBP
 
 class IntALU(FUDesc):
     opList = [ OpDesc(opClass='IntAlu',opLat=1) ]
