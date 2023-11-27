@@ -2,7 +2,7 @@
 #include "base/circular_queue.hh"
 #include "base/types.hh"
 #include "cpu/pred/bpred_unit.hh"
-#include "params/Perceptron.hh"
+#include "params/PerceptronBP.hh"
 
 class PerceptronBP : public BPredUnit
 {
@@ -11,7 +11,7 @@ class PerceptronBP : public BPredUnit
         //int8_t WT[1<<NUMBER_OF_WEIGHTS][WL];
         uint8_t threshold = 0; // Dynamic threshold to compare aganist hard coded max in define 
         
-        std::vector<uint64_t> globalHistory;
+        std::vector<uint64_t> globalHistory; // Global history registers
         std::vector<std::vector<int8_t>> weights;
 
         uint32_t number_of_weights;
@@ -35,7 +35,7 @@ class PerceptronBP : public BPredUnit
             bool globalPredTaken;
         };
 
-        PerceptronBP(const PerceptronParams *params);
+        PerceptronBP(const PerceptronBPParams *params);
 
         bool lookup(ThreadID tid, Addr branch_addr, void* &bp_history) override;
         void uncondBranch(ThreadID tid, Addr br_pc, void* &bp_history) override;
