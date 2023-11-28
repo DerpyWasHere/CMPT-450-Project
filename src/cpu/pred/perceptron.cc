@@ -66,7 +66,7 @@ Thus, the number of bits needed to represent a weight is one (for the sign bit) 
 
 PerceptronBP::PerceptronBP(const PerceptronBPParams *params) : BPredUnit(params), 
       globalHistory(params->numThreads, 0),
-      weights(params->number_of_perceptrons, std::vector<int8_t>(number_of_weights, 0))
+      weights(params->number_of_perceptrons, std::vector<int8_t>(params->number_of_weights, 0))
 {
     std::cout << "Constructor" << std::endl;
     number_of_perceptrons = params->number_of_perceptrons;
