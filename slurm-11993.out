@@ -1,0 +1,137 @@
+scons: Reading SConscript files ...
+Warning: Your compiler doesn't support incremental linking and lto at the same
+         time, so lto is being disabled. To force lto on anyway, use the
+         --force-lto option. That will disable partial linking.
+Info: Using Python config: python3-config
+Checking for C header file Python.h... (cached) yes
+Checking for C library python3.8... (cached) yes
+Checking for C library crypt... (cached) yes
+Checking for C library pthread... (cached) yes
+Checking for C library dl... (cached) yes
+Checking for C library util... (cached) yes
+Checking for C library m... (cached) yes
+Checking for accept(0,0,0) in C++ library None... (cached) yes
+Checking for zlibVersion() in C++ library z... (cached) yes
+Checking for GOOGLE_PROTOBUF_VERIFY_VERSION in C++ library protobuf... (cached) yes
+Checking for C header file valgrind/valgrind.h... (cached) no
+Checking for clock_nanosleep(0,0,NULL,NULL) in C library None... (cached) yes
+Checking for timer_create(CLOCK_MONOTONIC, NULL, NULL) in C library None... (cached) no
+Checking for timer_create(CLOCK_MONOTONIC, NULL, NULL) in C library rt... (cached) yes
+Checking for C library tcmalloc... (cached) yes
+Checking for char temp; backtrace_symbols_fd((void*)&temp, 0, 0) in C library None... (cached) yes
+Checking for C header file fenv.h... (cached) yes
+Checking for C header file png.h... (cached) yes
+Checking for C header file linux/kvm.h... (cached) yes
+Checking for C header file linux/if_tun.h... (cached) yes
+Checking size of struct kvm_xsave ... (cached) yes
+Checking for member exclude_host in struct perf_event_attr...(cached) yes
+Package hdf5-serial was not found in the pkg-config search path.
+Perhaps you should add the directory containing `hdf5-serial.pc'
+to the PKG_CONFIG_PATH environment variable
+No package 'hdf5-serial' found
+Checking for hdf5-serial using pkg-config... no
+Package hdf5 was not found in the pkg-config search path.
+Perhaps you should add the directory containing `hdf5.pc'
+to the PKG_CONFIG_PATH environment variable
+No package 'hdf5' found
+Checking for hdf5 using pkg-config... no
+Checking for H5Fcreate("", 0, 0, 0) in C library hdf5... (cached) no
+Warning: Couldn't find any HDF5 C++ libraries. Disabling
+         HDF5 support.
+Checking whether __i386__ is declared... (cached) no
+Checking whether __x86_64__ is declared... (cached) yes
+Building in /data/home/ama225/CMPT-450-Project/build/X86
+Using saved variables file /data/home/ama225/CMPT-450-Project/build/variables/X86
+scons: done reading SConscript files.
+scons: Building targets ...
+ [SO PARAM] BranchPredictor -> X86/params/BranchPredictor.hh
+ [SO PARAM] IndirectPredictor -> X86/params/IndirectPredictor.hh
+ [SO PARAM] LocalBP -> X86/params/LocalBP.hh
+ [SO PARAM] SimpleIndirectPredictor -> X86/params/SimpleIndirectPredictor.hh
+ [SO PARAM] TournamentBP -> X86/params/TournamentBP.hh
+ [SO PARAM] BiModeBP -> X86/params/BiModeBP.hh
+ [SO PARAM] TAGEBase -> X86/params/TAGEBase.hh
+ [SO PARAM] TAGE -> X86/params/TAGE.hh
+ [SO PARAM] LoopPredictor -> X86/params/LoopPredictor.hh
+ [SO PARAM] LTAGE -> X86/params/LTAGE.hh
+ [SO PARAM] MultiperspectivePerceptron -> X86/params/MultiperspectivePerceptron.hh
+ [SO PARAM] MultiperspectivePerceptron8KB -> X86/params/MultiperspectivePerceptron8KB.hh
+ [SO PARAM] MultiperspectivePerceptron64KB -> X86/params/MultiperspectivePerceptron64KB.hh
+ [SO PARAM] MPP_LoopPredictor -> X86/params/MPP_LoopPredictor.hh
+ [SO PARAM] MPP_StatisticalCorrector -> X86/params/MPP_StatisticalCorrector.hh
+ [SO PARAM] MPP_TAGE -> X86/params/MPP_TAGE.hh
+ [SO PARAM] MultiperspectivePerceptronTAGE -> X86/params/MultiperspectivePerceptronTAGE.hh
+ [SO PARAM] MPP_LoopPredictor_8KB -> X86/params/MPP_LoopPredictor_8KB.hh
+ [SO PARAM] MPP_StatisticalCorrector_8KB -> X86/params/MPP_StatisticalCorrector_8KB.hh
+ [SO PARAM] MPP_TAGE_8KB -> X86/params/MPP_TAGE_8KB.hh
+ [SO PARAM] MultiperspectivePerceptronTAGE8KB -> X86/params/MultiperspectivePerceptronTAGE8KB.hh
+ [SO PARAM] StatisticalCorrector -> X86/params/StatisticalCorrector.hh
+ [SO PARAM] MPP_StatisticalCorrector_64KB -> X86/params/MPP_StatisticalCorrector_64KB.hh
+ [SO PARAM] MultiperspectivePerceptronTAGE64KB -> X86/params/MultiperspectivePerceptronTAGE64KB.hh
+ [SO PARAM] TAGE_SC_L -> X86/params/TAGE_SC_L.hh
+ [SO PARAM] TAGE_SC_L_LoopPredictor -> X86/params/TAGE_SC_L_LoopPredictor.hh
+ [SO PARAM] TAGE_SC_L_TAGE -> X86/params/TAGE_SC_L_TAGE.hh
+ [SO PARAM] TAGE_SC_L_8KB -> X86/params/TAGE_SC_L_8KB.hh
+ [SO PARAM] TAGE_SC_L_8KB_StatisticalCorrector -> X86/params/TAGE_SC_L_8KB_StatisticalCorrector.hh
+ [SO PARAM] TAGE_SC_L_TAGE_8KB -> X86/params/TAGE_SC_L_TAGE_8KB.hh
+ [SO PARAM] TAGE_SC_L_64KB -> X86/params/TAGE_SC_L_64KB.hh
+ [SO PARAM] TAGE_SC_L_64KB_StatisticalCorrector -> X86/params/TAGE_SC_L_64KB_StatisticalCorrector.hh
+ [SO PARAM] TAGE_SC_L_TAGE_64KB -> X86/params/TAGE_SC_L_TAGE_64KB.hh
+ [SO PARAM] PerceptronBP -> X86/params/PerceptronBP.hh
+ [SO PyBind] BiModeBP -> X86/python/_m5/param_BiModeBP.cc
+ [SO PyBind] BranchPredictor -> X86/python/_m5/param_BranchPredictor.cc
+ [SO PyBind] IndirectPredictor -> X86/python/_m5/param_IndirectPredictor.cc
+ [SO PyBind] LTAGE -> X86/python/_m5/param_LTAGE.cc
+ [SO PyBind] LocalBP -> X86/python/_m5/param_LocalBP.cc
+ [SO PyBind] LoopPredictor -> X86/python/_m5/param_LoopPredictor.cc
+ [     CXX] X86/cpu/pred/perceptron.cc -> .o
+ [SO PyBind] MPP_LoopPredictor -> X86/python/_m5/param_MPP_LoopPredictor.cc
+ [SO PyBind] MPP_LoopPredictor_8KB -> X86/python/_m5/param_MPP_LoopPredictor_8KB.cc
+ [SO PyBind] MPP_StatisticalCorrector -> X86/python/_m5/param_MPP_StatisticalCorrector.cc
+ [SO PyBind] MPP_StatisticalCorrector_64KB -> X86/python/_m5/param_MPP_StatisticalCorrector_64KB.cc
+ [SO PyBind] MPP_StatisticalCorrector_8KB -> X86/python/_m5/param_MPP_StatisticalCorrector_8KB.cc
+ [SO PyBind] MPP_TAGE -> X86/python/_m5/param_MPP_TAGE.cc
+ [SO PyBind] MPP_TAGE_8KB -> X86/python/_m5/param_MPP_TAGE_8KB.cc
+ [SO PyBind] MultiperspectivePerceptron -> X86/python/_m5/param_MultiperspectivePerceptron.cc
+ [SO PyBind] MultiperspectivePerceptron64KB -> X86/python/_m5/param_MultiperspectivePerceptron64KB.cc
+ [SO PyBind] MultiperspectivePerceptron8KB -> X86/python/_m5/param_MultiperspectivePerceptron8KB.cc
+ [SO PyBind] MultiperspectivePerceptronTAGE -> X86/python/_m5/param_MultiperspectivePerceptronTAGE.cc
+ [SO PyBind] MultiperspectivePerceptronTAGE64KB -> X86/python/_m5/param_MultiperspectivePerceptronTAGE64KB.cc
+ [SO PyBind] MultiperspectivePerceptronTAGE8KB -> X86/python/_m5/param_MultiperspectivePerceptronTAGE8KB.cc
+ [SO PyBind] PerceptronBP -> X86/python/_m5/param_PerceptronBP.cc
+ [     CXX] X86/python/_m5/param_PerceptronBP.cc -> .o
+ [SO PyBind] SimpleIndirectPredictor -> X86/python/_m5/param_SimpleIndirectPredictor.cc
+ [SO PyBind] StatisticalCorrector -> X86/python/_m5/param_StatisticalCorrector.cc
+ [SO PyBind] TAGE -> X86/python/_m5/param_TAGE.cc
+ [SO PyBind] TAGEBase -> X86/python/_m5/param_TAGEBase.cc
+ [SO PyBind] TAGE_SC_L -> X86/python/_m5/param_TAGE_SC_L.cc
+ [SO PyBind] TAGE_SC_L_64KB -> X86/python/_m5/param_TAGE_SC_L_64KB.cc
+ [SO PyBind] TAGE_SC_L_64KB_StatisticalCorrector -> X86/python/_m5/param_TAGE_SC_L_64KB_StatisticalCorrector.cc
+ [SO PyBind] TAGE_SC_L_8KB -> X86/python/_m5/param_TAGE_SC_L_8KB.cc
+ [SO PyBind] TAGE_SC_L_8KB_StatisticalCorrector -> X86/python/_m5/param_TAGE_SC_L_8KB_StatisticalCorrector.cc
+ [SO PyBind] TAGE_SC_L_LoopPredictor -> X86/python/_m5/param_TAGE_SC_L_LoopPredictor.cc
+ [SO PyBind] TAGE_SC_L_TAGE -> X86/python/_m5/param_TAGE_SC_L_TAGE.cc
+ [SO PyBind] TAGE_SC_L_TAGE_64KB -> X86/python/_m5/param_TAGE_SC_L_TAGE_64KB.cc
+ [SO PyBind] TAGE_SC_L_TAGE_8KB -> X86/python/_m5/param_TAGE_SC_L_TAGE_8KB.cc
+ [SO PyBind] TournamentBP -> X86/python/_m5/param_TournamentBP.cc
+ [EMBED PY] X86/marshal, cpu/pred/BranchPredictor.py -> cpu/pred/BranchPredictor.py.cc
+ [VER TAGS]  -> X86/sim/tags.cc
+ [     CXX] X86/mem/ruby/protocol/DMA_Controller.cc -> .o
+ [     CXX] X86/mem/ruby/protocol/DMA_Wakeup.cc -> .o
+ [     CXX] X86/sim/tags.cc -> .o
+ [     CXX] X86/cpu/pred/BranchPredictor.py.cc -> .o
+ [     CXX] X86/mem/ruby/protocol/Directory_Controller.cc -> .o
+ [     CXX] X86/mem/ruby/protocol/Directory_Wakeup.cc -> .o
+ [    LINK]  -> X86/cpu/pred/lib.o.partial
+ [    LINK]  -> X86/sim/lib.o.partial
+ [     CXX] X86/mem/ruby/protocol/L1Cache_Controller.cc -> .o
+ [     CXX] X86/mem/ruby/protocol/L1Cache_Wakeup.cc -> .o
+ [    LINK]  -> X86/gpu-compute/lib.o.partial
+ [    LINK]  -> X86/mem/ruby/protocol/lib.o.partial
+ [     CXX] X86/base/date.cc -> .o
+ [    LINK]  -> X86/gem5.opt
+scons: done building targets.
+*** Summary of Warnings ***
+Warning: Your compiler doesn't support incremental linking and lto at the same
+         time, so lto is being disabled. To force lto on anyway, use the
+         --force-lto option. That will disable partial linking.

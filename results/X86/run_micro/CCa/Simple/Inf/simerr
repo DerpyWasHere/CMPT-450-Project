@@ -1,6 +1,45 @@
-Traceback (most recent call last):
-  File "<string>", line 1, in <module>
-  File "build/X86/python/m5/main.py", line 457, in main
-  File "gem5-config/run_micro.py", line 8, in <module>
-    from m5.objects import Perceptron, SimpleMemory
-ImportError: cannot import name 'Perceptron' from 'm5.objects' (m5/objects/__init__.py)
+warn: Sockets disabled, not accepting gdb connections
+warn: CoherentXBar system.interrupt_xbar has no snooping ports attached!
+warn: interrupt_xbar.master is deprecated. `master` is now called `mem_side_ports`
+warn: interrupt_xbar.slave is deprecated. `slave` is now called `cpu_side_ports`
+warn: interrupts.int_master is deprecated. `int_master` is now called `int_requestor`
+warn: interrupt_xbar.master is deprecated. `master` is now called `mem_side_ports`
+warn: interrupts.int_slave is deprecated. `int_slave` is now called `int_responder`
+warn: No dot file generated. Please install pydot to generate the dot file and pdf.
+info: Entering event queue @ 0.  Starting simulation...
+gem5 has encountered a segmentation fault!
+
+--- BEGIN LIBC BACKTRACE ---
+build/X86/gem5.opt(+0x12d1060)[0x55ec78bcc060]
+build/X86/gem5.opt(+0x12e5405)[0x55ec78be0405]
+/lib/x86_64-linux-gnu/libpthread.so.0(+0x143c0)[0x7fbd71b493c0]
+build/X86/gem5.opt(+0x6b60a0)[0x55ec77fb10a0]
+build/X86/gem5.opt(+0x68896c)[0x55ec77f8396c]
+build/X86/gem5.opt(+0x67ab64)[0x55ec77f75b64]
+build/X86/gem5.opt(+0x670c0c)[0x55ec77f6bc0c]
+build/X86/gem5.opt(+0x671222)[0x55ec77f6c222]
+build/X86/gem5.opt(+0x670110)[0x55ec77f6b110]
+build/X86/gem5.opt(+0x670e08)[0x55ec77f6be08]
+build/X86/gem5.opt(+0x671222)[0x55ec77f6c222]
+build/X86/gem5.opt(+0x670110)[0x55ec77f6b110]
+build/X86/gem5.opt(+0x671ab9)[0x55ec77f6cab9]
+build/X86/gem5.opt(+0x12d915d)[0x55ec78bd415d]
+build/X86/gem5.opt(+0x12fac68)[0x55ec78bf5c68]
+build/X86/gem5.opt(+0x12fba5d)[0x55ec78bf6a5d]
+build/X86/gem5.opt(+0x15ee8f0)[0x55ec78ee98f0]
+build/X86/gem5.opt(+0x32bf21)[0x55ec77c26f21]
+/lib/x86_64-linux-gnu/libpython3.8.so.1.0(+0x2a8748)[0x7fbd71e00748]
+/lib/x86_64-linux-gnu/libpython3.8.so.1.0(_PyEval_EvalFrameDefault+0x8dd8)[0x7fbd71bd5f48]
+/lib/x86_64-linux-gnu/libpython3.8.so.1.0(_PyEval_EvalCodeWithName+0x8fb)[0x7fbd71d22e4b]
+/lib/x86_64-linux-gnu/libpython3.8.so.1.0(_PyFunction_Vectorcall+0x94)[0x7fbd71e00124]
+/lib/x86_64-linux-gnu/libpython3.8.so.1.0(+0x74d6d)[0x7fbd71bccd6d]
+/lib/x86_64-linux-gnu/libpython3.8.so.1.0(_PyEval_EvalFrameDefault+0x7d86)[0x7fbd71bd4ef6]
+/lib/x86_64-linux-gnu/libpython3.8.so.1.0(_PyEval_EvalCodeWithName+0x8fb)[0x7fbd71d22e4b]
+/lib/x86_64-linux-gnu/libpython3.8.so.1.0(PyEval_EvalCodeEx+0x42)[0x7fbd71d231d2]
+/lib/x86_64-linux-gnu/libpython3.8.so.1.0(PyEval_EvalCode+0x1f)[0x7fbd71d235bf]
+/lib/x86_64-linux-gnu/libpython3.8.so.1.0(+0x1cfc01)[0x7fbd71d27c01]
+/lib/x86_64-linux-gnu/libpython3.8.so.1.0(+0x25f547)[0x7fbd71db7547]
+/lib/x86_64-linux-gnu/libpython3.8.so.1.0(+0x74d6d)[0x7fbd71bccd6d]
+/lib/x86_64-linux-gnu/libpython3.8.so.1.0(_PyEval_EvalFrameDefault+0x12fd)[0x7fbd71bce46d]
+/lib/x86_64-linux-gnu/libpython3.8.so.1.0(_PyEval_EvalCodeWithName+0x8fb)[0x7fbd71d22e4b]
+--- END LIBC BACKTRACE ---

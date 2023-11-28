@@ -1,0 +1,32 @@
+      0: system.cpu: A0 T0 : @_start    : hint	                     
+      0: system.cpu: A0 T0 : @_start. 0 :   HINT_NOP : fault   No Fault : No_OpClass :   flags=(IsMicroop|IsLastMicroop|IsFirstMicroop)
+      0: system.cpu: A0 T0 : @_start+4    : xor	ebp, ebp              
+      0: system.cpu: A0 T0 : @_start+4. 0 :   XOR_R_R : xor   ebp, ebp, ebp : IntAlu :  D=0x0000000000000000  flags=(IsInteger|IsCC|IsMicroop|IsLastMicroop|IsFirstMicroop)
+      0: system.cpu: A0 T0 : @_start+6    : mov	r9, rdx               
+      0: system.cpu: A0 T0 : @_start+6. 0 :   MOV_R_R : mov   r9, r9, rdx : IntAlu :  D=0x0000000000000000  flags=(IsInteger|IsMicroop|IsLastMicroop|IsFirstMicroop)
+      0: system.cpu: A0 T0 : @_start+9    : pop	rsi                   
+      0: system.cpu: A0 T0 : @_start+9. 0 :   POP_R : ldis   t1, SS:[rsp] : MemRead :  D=0x0000000000000001 A=0x7fffffffee40  flags=(IsInteger|IsMemRef|IsLoad|IsMicroop|IsDelayedCommit|IsFirstMicroop)
+      0: system.cpu: A0 T0 : @_start+9. 1 :   POP_R : addi   rsp, rsp, 0x8 : IntAlu :  D=0x00007fffffffee48  flags=(IsInteger|IsMicroop|IsDelayedCommit)
+      0: system.cpu: A0 T0 : @_start+9. 2 :   POP_R : mov   rsi, rsi, t1 : IntAlu :  D=0x0000000000000001  flags=(IsInteger|IsMicroop|IsLastMicroop)
+      0: system.cpu: A0 T0 : @_start+10    : mov	rdx, rsp              
+      0: system.cpu: A0 T0 : @_start+10. 0 :   MOV_R_R : mov   rdx, rdx, rsp : IntAlu :  D=0x00007fffffffee48  flags=(IsInteger|IsMicroop|IsLastMicroop|IsFirstMicroop)
+      0: system.cpu: A0 T0 : @_start+13    : and	rax, 0xfffffffffffffff0
+      0: system.cpu: A0 T0 : @_start+13. 0 :   AND_R_I : limm   t1, 0xfffffffffffffff0 : IntAlu :  D=0xfffffffffffffff0  flags=(IsInteger|IsMicroop|IsDelayedCommit|IsFirstMicroop)
+      0: system.cpu: A0 T0 : @_start+13. 1 :   AND_R_I : and   rsp, rsp, t1 : IntAlu :  D=0x0000000000000000  flags=(IsInteger|IsCC|IsMicroop|IsLastMicroop)
+      0: system.cpu: A0 T0 : @_start+17    : push	rax                  
+      0: system.cpu: A0 T0 : @_start+17. 0 :   PUSH_R : stis   rax, SS:[rsp + 0xfffffffffffffff8] : MemWrite :  D=0x0000000000000000 A=0x7fffffffee38  flags=(IsInteger|IsMemRef|IsStore|IsMicroop|IsDelayedCommit|IsFirstMicroop)
+      0: system.cpu: A0 T0 : @_start+17. 1 :   PUSH_R : subi   rsp, rsp, 0x8 : IntAlu :  D=0x00007fffffffee38  flags=(IsInteger|IsMicroop|IsLastMicroop)
+      0: system.cpu: A0 T0 : @_start+18    : push	rsp                  
+      0: system.cpu: A0 T0 : @_start+18. 0 :   PUSH_R : stis   rsp, SS:[rsp + 0xfffffffffffffff8] : MemWrite :  D=0x00007fffffffee38 A=0x7fffffffee30  flags=(IsInteger|IsMemRef|IsStore|IsMicroop|IsDelayedCommit|IsFirstMicroop)
+      0: system.cpu: A0 T0 : @_start+18. 1 :   PUSH_R : subi   rsp, rsp, 0x8 : IntAlu :  D=0x00007fffffffee30  flags=(IsInteger|IsMicroop|IsLastMicroop)
+      0: system.cpu: A0 T0 : @_start+19    : mov	r15, 0x402de0         
+      0: system.cpu: A0 T0 : @_start+19. 0 :   MOV_R_I : limm   r8, 0x402de0 : IntAlu :  D=0x0000000000402de0  flags=(IsInteger|IsMicroop|IsLastMicroop|IsFirstMicroop)
+      0: system.cpu: A0 T0 : @_start+26    : mov	rdi, 0x402d40         
+      0: system.cpu: A0 T0 : @_start+26. 0 :   MOV_R_I : limm   rcx, 0x402d40 : IntAlu :  D=0x0000000000402d40  flags=(IsInteger|IsMicroop|IsLastMicroop|IsFirstMicroop)
+      0: system.cpu: A0 T0 : @_start+33    : mov	rdi, 0x401730         
+      0: system.cpu: A0 T0 : @_start+33. 0 :   MOV_R_I : limm   rdi, 0x401730 : IntAlu :  D=0x0000000000401730  flags=(IsInteger|IsMicroop|IsLastMicroop|IsFirstMicroop)
+      0: system.cpu: A0 T0 : @_start+40    : call	0x4c2                
+      0: system.cpu: A0 T0 : @_start+40. 0 :   CALL_NEAR_I : limm   t1, 0x4c2 : IntAlu :  D=0x00000000000004c2  flags=(IsInteger|IsMicroop|IsDelayedCommit|IsFirstMicroop)
+      0: system.cpu: A0 T0 : @_start+40. 1 :   CALL_NEAR_I : rdip   t7, %ctrl153,  : IntAlu :  D=0x0000000000401c1e  flags=(IsInteger|IsMicroop|IsDelayedCommit)
+      0: system.cpu: A0 T0 : @_start+40. 2 :   CALL_NEAR_I : stis   t7, SS:[rsp + 0xfffffffffffffff8] : MemWrite :  D=0x0000000000401c1e A=0x7fffffffee28  flags=(IsInteger|IsMemRef|IsStore|IsMicroop|IsDelayedCommit)
+      0: system.cpu: A0 T0 : @_start+40. 3 :   CALL_NEAR_I : subi   rsp, rsp, 0x8 : IntAlu :  D=0x00007fffffffee28  flags=(IsInteger|IsMicroop|IsDelayedCommit)

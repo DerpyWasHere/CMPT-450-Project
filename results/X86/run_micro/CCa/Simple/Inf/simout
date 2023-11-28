@@ -1,12 +1,14 @@
+Global frequency set at 1000000000000 ticks per second
 Redirecting stdout to /data/home/ama225/CMPT-450-Project/results/X86/run_micro/CCa/Simple/Inf/simout
 Redirecting stderr to /data/home/ama225/CMPT-450-Project/results/X86/run_micro/CCa/Simple/Inf/simerr
 gem5 Simulator System.  http://gem5.org
 gem5 is copyrighted software; use the --copyright option for details.
 
 gem5 version 20.1.0.2
-gem5 compiled Sep 18 2021 20:01:29
-gem5 started Nov 27 2023 06:39:22
-gem5 executing on ARCH-750, pid 1688575
-command line: /data/gem5-baseline/build/X86/gem5.opt -re --outdir=/data/home/ama225/CMPT-450-Project/results/X86/run_micro/CCa/Simple/Inf gem5-config/run_micro.py Simple Inf microbenchmark/CCa/bench.X86 64kB 1MB 8 16 --cpus-per-task=8 --time=60:00 --mem=1G
+gem5 compiled Nov 28 2023 01:09:42
+gem5 started Nov 28 2023 01:41:14
+gem5 executing on ARCH-750, pid 1793002
+command line: build/X86/gem5.opt -re --outdir=/data/home/ama225/CMPT-450-Project/results/X86/run_micro/CCa/Simple/Inf --debug-flags=ExecAll --debug-file=trace.out --debug-start=0 --debug-end=100000 gem5-config/run_micro.py Simple Inf microbenchmark/CCa/bench.X86
 
 info: Standard input is not a terminal, disabling listeners.
+1GHz
