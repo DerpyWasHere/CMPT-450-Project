@@ -65,15 +65,15 @@ Thus, the number of bits needed to represent a weight is one (for the sign bit) 
 #include "cpu/pred/perceptron.hh"
 
 PerceptronBP::PerceptronBP(const PerceptronBPParams *params) : BPredUnit(params), 
-      globalHistory(params->numThreads, 0)
+      globalHistory(params->numThreads, 0),
+      weights(params->number_of_perceptrons, std::vector<int8_t>(number_of_weights, 0))
 {
     std::cout << "Constructor" << std::endl;
-    number_of_perceptrons = params->number_of_perceptrons; 
-    number_of_weights = params->number_of_weights; 
+    number_of_perceptrons = params->number_of_perceptrons;
+    number_of_weights = params->number_of_weights;
     global_history_bits = params->global_history_bits;
-    history_mask = mask(global_history_bits); 
-    inform("History mask: %ld\n", history_mask); 
-
+    history_mask = mask(global_history_bits);
+    inform("History mask: %ld\n", history_mask);
     // std::vector<uint64_t> globalHistory; // Global history registers
     // std::vector<std::vector<int8_t>> weights;
     // for(int i = 0; i < number_of_perceptrons; i++)
