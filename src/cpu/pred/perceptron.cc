@@ -66,6 +66,7 @@ Thus, the number of bits needed to represent a weight is one (for the sign bit) 
 
 PerceptronBP::PerceptronBP(const PerceptronBPParams *params) : BPredUnit(params)
 {
+    std::cout << "Constructor" << std::endl;
     number_of_perceptrons = params->number_of_perceptrons;
     number_of_weights = params->number_of_weights;
     global_history_bits = params->global_history_bits;
@@ -78,6 +79,7 @@ PerceptronBP::PerceptronBP(const PerceptronBPParams *params) : BPredUnit(params)
 uint64_t 
 PerceptronBP::weight_hash(Addr pc, uint32_t num_perceptron)
 {
+    std::cout << "Weight hash" << std::endl;
     return pc % num_perceptron; // Take simple mod of wt_size
 }
 
@@ -97,6 +99,7 @@ PerceptronBP::weight_hash(Addr pc, uint32_t num_perceptron)
 // no need for this function? -- remove later
 int8_t Perceptron_Output()
 {
+    std::cout << "Perceptron output" << std::endl;
     // Get 10 (NUMBER_OF_WEIGHTS) inputs from GHR and dot it with weights
     // If negative, not taken --> output -1
     // If positive, taken --> output 1
@@ -107,6 +110,7 @@ inline
 void
 PerceptronBP::updateGlobalHistTaken(ThreadID tid)
 {
+    std::cout << "Update history taken" << std::endl;
     globalHistory[tid] = (globalHistory[tid] << 1) | 1;
     globalHistory[tid] = globalHistory[tid] & history_mask;
 }
@@ -115,6 +119,7 @@ inline
 void
 PerceptronBP::updateGlobalHistNotTaken(ThreadID tid)
 {
+    std::cout << "Update history not taken" << std::endl;
     globalHistory[tid] = (globalHistory[tid] << 1);
     globalHistory[tid] = globalHistory[tid] & history_mask;
 }
@@ -129,7 +134,7 @@ PerceptronBP::updateGlobalHistNotTaken(ThreadID tid)
 bool
 PerceptronBP::lookup(ThreadID tid, Addr branch_addr, void * &bp_history)
 {
-    
+    std::cout << "lookup" << std::endl;
     uint64_t perceptron_index = weight_hash(branch_addr, number_of_weights);
     bool history = globalHistory[tid];
 
@@ -150,7 +155,7 @@ PerceptronBP::lookup(ThreadID tid, Addr branch_addr, void * &bp_history)
     BPHistory *hist = new BPHistory;
     hist->globalHistory = globalHistory[tid];
     hist->globalPredTaken = prediction;
-    bp_history = (void*) hist;
+    bp_history = static_cast<void*>(hist);
 
     // Update history
     if(prediction)
@@ -164,6 +169,7 @@ PerceptronBP::lookup(ThreadID tid, Addr branch_addr, void * &bp_history)
 void 
 PerceptronBP::uncondBranch(ThreadID tid, Addr br_pc, void* &bp_history)
 {
+    std::cout << "uncondBranch" << std::endl;
     BPHistory *hist = new BPHistory;
     hist->globalHistory = globalHistory[tid];
     hist->globalPredTaken = true;
@@ -176,6 +182,7 @@ PerceptronBP::uncondBranch(ThreadID tid, Addr br_pc, void* &bp_history)
 void 
 PerceptronBP::btbUpdate(ThreadID tid, Addr branch_addr, void* &bp_history)
 {
+    std::cout << "btbUpdate" << std::endl;
     //BPHistory *hist = new BPHistory;
 }
 
@@ -186,6 +193,7 @@ PerceptronBP::update(ThreadID tid, Addr branch_addr, bool taken, void *bp_histor
                     bool squashed, const StaticInstPtr & inst, Addr corrTarget)
 // GHR and weight table is public so *bp_History isn't required i dont think 
 {
+    std::cout << "Update" << std::endl;
     BPHistory *history = static_cast<BPHistory *>(bp_history);
 
     // If squash, undo history
@@ -199,7 +207,7 @@ PerceptronBP::update(ThreadID tid, Addr branch_addr, bool taken, void *bp_histor
         // wi := wi + txi
         // end for
     // end if
-    unsigned int t = 0;
+    int t = 0;
     if(taken) t = 1;
     else t = -1;
 
@@ -209,6 +217,7 @@ PerceptronBP::update(ThreadID tid, Addr branch_addr, bool taken, void *bp_histor
     {
         for(unsigned int i = 0; i < number_of_weights; i++)
         {
+            std::cout << i << std::endl;
             weights[index][i] += t*weights[index][i];
         }
     }
@@ -221,6 +230,7 @@ PerceptronBP::update(ThreadID tid, Addr branch_addr, bool taken, void *bp_histor
 void
 PerceptronBP::squash(ThreadID tid, void *bp_history)
 {
+    std::cout << "Squash" << std::endl;
     BPHistory *history = static_cast<BPHistory *>(bp_history);
 
     globalHistory[tid] = history->globalHistory;
@@ -231,5 +241,6 @@ PerceptronBP::squash(ThreadID tid, void *bp_history)
 PerceptronBP*
 PerceptronBPParams::create()
 {
+    std::cout << "Create function" << std::endl;
     return new PerceptronBP(this);
 }
