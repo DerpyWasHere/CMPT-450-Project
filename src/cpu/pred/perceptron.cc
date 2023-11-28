@@ -210,12 +210,12 @@ PerceptronBP::update(ThreadID tid, Addr branch_addr, bool taken, void *bp_histor
     int32_t y = weights[perceptron_index][0];
     for(unsigned int i = 0; i < number_of_weights; i++)
     {
-        if(history == 1)
+        if(globalHistory[tid] == 1)
             y += weights[perceptron_index][i]; // GHR[i] == 1 so 1
         else y -= weights[perceptron_index][i]; // GHR[i] == 0 so -1
     }
 
-    if(squashed)
+    //if(squashed)
 
     // if sign(yout) != t or |yout| < THRESHOLD then
         // for i := 0 to n do
