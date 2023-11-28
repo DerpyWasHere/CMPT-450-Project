@@ -148,27 +148,28 @@ bool
 PerceptronBP::lookup(ThreadID tid, Addr branch_addr, void * &bp_history)
 {
     std::cout << "lookup" << std::endl;
-    uint64_t perceptron_index = weight_hash(branch_addr, number_of_weights);
-    bool history = globalHistory[tid];
-
-    int32_t y = weights[perceptron_index][0];
+    uint64_t perceptron_index = weight_hash(branch_addr, number_of_weights); inform("line 151");
+    bool history = globalHistory[tid]; inform("line 152");
+    inform("line 153");
+    int32_t y = weights[perceptron_index][0];   inform("line 154");
     // STEP 2-3
     // Compute dot product
     for(unsigned int i = 0; i < number_of_weights; i++)
     {
-        if(history == 1)
-            y += weights[perceptron_index][i]; // GHR[i] == 1 so 1
-        else y -= weights[perceptron_index][i]; // GHR[i] == 0 so -1
+        if(history == 1) {
+            y += weights[perceptron_index][i]; inform("line 160, %d", i);
+        } // GHR[i] == 1 so 1
+        else { y -= weights[perceptron_index][i]; inform("line 161, %d", i);} // GHR[i] == 0 so -1
     }
     
     // STEP 4
     bool prediction = (y >= 0) ? true : false;
 
     // Record history
-    BPHistory *hist = new BPHistory;
-    hist->globalHistory = globalHistory[tid];
-    hist->globalPredTaken = prediction;
-    bp_history = static_cast<void*>(hist);
+    BPHistory *hist = new BPHistory;    inform("line 168");
+    hist->globalHistory = globalHistory[tid];   inform("line 169");
+    hist->globalPredTaken = prediction;     inform("line 170");
+    bp_history = static_cast<void*>(hist);  inform("line 171");
 
     // Update history
     if(prediction)

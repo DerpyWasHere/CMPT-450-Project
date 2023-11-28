@@ -1,0 +1,278 @@
+      0: system.cpu.wrapped_function_event: EventFunctionWrapped 22 scheduled @ 0
+      0: Event_32: generic 32 scheduled @ 0
+      0: Event_32: generic 32 rescheduled @ 18446744073709551615
+      0: system.cpu.wrapped_function_event: EventFunctionWrapped 22 executed @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_19: Timing CPU icache tick 19 scheduled @ 0
+      0: Event_19: Timing CPU icache tick 19 executed @ 0
+      0: system.cpu: A0 T0 : @_start    : hint	                     
+      0: system.cpu: A0 T0 : @_start. 0 :   HINT_NOP : fault   No Fault : No_OpClass :   flags=(IsMicroop|IsLastMicroop|IsFirstMicroop)
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_19: Timing CPU icache tick 19 scheduled @ 0
+      0: Event_19: Timing CPU icache tick 19 executed @ 0
+      0: system.cpu: A0 T0 : @_start+4    : xor	ebp, ebp              
+      0: system.cpu: A0 T0 : @_start+4. 0 :   XOR_R_R : xor   ebp, ebp, ebp : IntAlu :  D=0x0000000000000000  flags=(IsInteger|IsCC|IsMicroop|IsLastMicroop|IsFirstMicroop)
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_19: Timing CPU icache tick 19 scheduled @ 0
+      0: Event_19: Timing CPU icache tick 19 executed @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_19: Timing CPU icache tick 19 scheduled @ 0
+      0: Event_19: Timing CPU icache tick 19 executed @ 0
+      0: system.cpu: A0 T0 : @_start+6    : mov	r9, rdx               
+      0: system.cpu: A0 T0 : @_start+6. 0 :   MOV_R_R : mov   r9, r9, rdx : IntAlu :  D=0x0000000000000000  flags=(IsInteger|IsMicroop|IsLastMicroop|IsFirstMicroop)
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_19: Timing CPU icache tick 19 scheduled @ 0
+      0: Event_19: Timing CPU icache tick 19 executed @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_21: Timing CPU dcache tick 21 scheduled @ 0
+      0: Event_21: Timing CPU dcache tick 21 executed @ 0
+      0: system.cpu: A0 T0 : @_start+9    : pop	rsi                   
+      0: system.cpu: A0 T0 : @_start+9. 0 :   POP_R : ldis   t1, SS:[rsp] : MemRead :  D=0x0000000000000001 A=0x7fffffffee40  flags=(IsInteger|IsMemRef|IsLoad|IsMicroop|IsDelayedCommit|IsFirstMicroop)
+      0: system.cpu: A0 T0 : @_start+9. 1 :   POP_R : addi   rsp, rsp, 0x8 : IntAlu :  D=0x00007fffffffee48  flags=(IsInteger|IsMicroop|IsDelayedCommit)
+      0: system.cpu: A0 T0 : @_start+9. 2 :   POP_R : mov   rsi, rsi, t1 : IntAlu :  D=0x0000000000000001  flags=(IsInteger|IsMicroop|IsLastMicroop)
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_19: Timing CPU icache tick 19 scheduled @ 0
+      0: Event_19: Timing CPU icache tick 19 executed @ 0
+      0: system.cpu: A0 T0 : @_start+10    : mov	rdx, rsp              
+      0: system.cpu: A0 T0 : @_start+10. 0 :   MOV_R_R : mov   rdx, rdx, rsp : IntAlu :  D=0x00007fffffffee48  flags=(IsInteger|IsMicroop|IsLastMicroop|IsFirstMicroop)
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_19: Timing CPU icache tick 19 scheduled @ 0
+      0: Event_19: Timing CPU icache tick 19 executed @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_19: Timing CPU icache tick 19 scheduled @ 0
+      0: Event_19: Timing CPU icache tick 19 executed @ 0
+      0: system.cpu: A0 T0 : @_start+13    : and	rax, 0xfffffffffffffff0
+      0: system.cpu: A0 T0 : @_start+13. 0 :   AND_R_I : limm   t1, 0xfffffffffffffff0 : IntAlu :  D=0xfffffffffffffff0  flags=(IsInteger|IsMicroop|IsDelayedCommit|IsFirstMicroop)
+      0: system.cpu: A0 T0 : @_start+13. 1 :   AND_R_I : and   rsp, rsp, t1 : IntAlu :  D=0x0000000000000000  flags=(IsInteger|IsCC|IsMicroop|IsLastMicroop)
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_19: Timing CPU icache tick 19 scheduled @ 0
+      0: Event_19: Timing CPU icache tick 19 executed @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_21: Timing CPU dcache tick 21 scheduled @ 0
+      0: Event_21: Timing CPU dcache tick 21 executed @ 0
+      0: system.cpu: A0 T0 : @_start+17    : push	rax                  
+      0: system.cpu: A0 T0 : @_start+17. 0 :   PUSH_R : stis   rax, SS:[rsp + 0xfffffffffffffff8] : MemWrite :  D=0x0000000000000000 A=0x7fffffffee38  flags=(IsInteger|IsMemRef|IsStore|IsMicroop|IsDelayedCommit|IsFirstMicroop)
+      0: system.cpu: A0 T0 : @_start+17. 1 :   PUSH_R : subi   rsp, rsp, 0x8 : IntAlu :  D=0x00007fffffffee38  flags=(IsInteger|IsMicroop|IsLastMicroop)
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_19: Timing CPU icache tick 19 scheduled @ 0
+      0: Event_19: Timing CPU icache tick 19 executed @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_21: Timing CPU dcache tick 21 scheduled @ 0
+      0: Event_21: Timing CPU dcache tick 21 executed @ 0
+      0: system.cpu: A0 T0 : @_start+18    : push	rsp                  
+      0: system.cpu: A0 T0 : @_start+18. 0 :   PUSH_R : stis   rsp, SS:[rsp + 0xfffffffffffffff8] : MemWrite :  D=0x00007fffffffee38 A=0x7fffffffee30  flags=(IsInteger|IsMemRef|IsStore|IsMicroop|IsDelayedCommit|IsFirstMicroop)
+      0: system.cpu: A0 T0 : @_start+18. 1 :   PUSH_R : subi   rsp, rsp, 0x8 : IntAlu :  D=0x00007fffffffee30  flags=(IsInteger|IsMicroop|IsLastMicroop)
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_19: Timing CPU icache tick 19 scheduled @ 0
+      0: Event_19: Timing CPU icache tick 19 executed @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_19: Timing CPU icache tick 19 scheduled @ 0
+      0: Event_19: Timing CPU icache tick 19 executed @ 0
+      0: system.cpu: A0 T0 : @_start+19    : mov	r15, 0x402de0         
+      0: system.cpu: A0 T0 : @_start+19. 0 :   MOV_R_I : limm   r8, 0x402de0 : IntAlu :  D=0x0000000000402de0  flags=(IsInteger|IsMicroop|IsLastMicroop|IsFirstMicroop)
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_19: Timing CPU icache tick 19 scheduled @ 0
+      0: Event_19: Timing CPU icache tick 19 executed @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_19: Timing CPU icache tick 19 scheduled @ 0
+      0: Event_19: Timing CPU icache tick 19 executed @ 0
+      0: system.cpu: A0 T0 : @_start+26    : mov	rdi, 0x402d40         
+      0: system.cpu: A0 T0 : @_start+26. 0 :   MOV_R_I : limm   rcx, 0x402d40 : IntAlu :  D=0x0000000000402d40  flags=(IsInteger|IsMicroop|IsLastMicroop|IsFirstMicroop)
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_19: Timing CPU icache tick 19 scheduled @ 0
+      0: Event_19: Timing CPU icache tick 19 executed @ 0
+      0: system.cpu: A0 T0 : @_start+33    : mov	rdi, 0x401730         
+      0: system.cpu: A0 T0 : @_start+33. 0 :   MOV_R_I : limm   rdi, 0x401730 : IntAlu :  D=0x0000000000401730  flags=(IsInteger|IsMicroop|IsLastMicroop|IsFirstMicroop)
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_19: Timing CPU icache tick 19 scheduled @ 0
+      0: Event_19: Timing CPU icache tick 19 executed @ 0
+      0: system.cpu: A0 T0 : @_start+40    : call	0x4c2                
+      0: system.cpu: A0 T0 : @_start+40. 0 :   CALL_NEAR_I : limm   t1, 0x4c2 : IntAlu :  D=0x00000000000004c2  flags=(IsInteger|IsMicroop|IsDelayedCommit|IsFirstMicroop)
+      0: system.cpu: A0 T0 : @_start+40. 1 :   CALL_NEAR_I : rdip   t7, %ctrl153,  : IntAlu :  D=0x0000000000401c1e  flags=(IsInteger|IsMicroop|IsDelayedCommit)
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_21: Timing CPU dcache tick 21 scheduled @ 0
+      0: Event_21: Timing CPU dcache tick 21 executed @ 0
+      0: system.cpu: A0 T0 : @_start+40. 2 :   CALL_NEAR_I : stis   t7, SS:[rsp + 0xfffffffffffffff8] : MemWrite :  D=0x0000000000401c1e A=0x7fffffffee28  flags=(IsInteger|IsMemRef|IsStore|IsMicroop|IsDelayedCommit)
+      0: system.cpu: A0 T0 : @_start+40. 3 :   CALL_NEAR_I : subi   rsp, rsp, 0x8 : IntAlu :  D=0x00007fffffffee28  flags=(IsInteger|IsMicroop|IsDelayedCommit)
+      0: system.cpu: A0 T0 : @_start+40. 4 :   CALL_NEAR_I : wrip   , t7, t1 : IntAlu :   flags=(IsInteger|IsControl|IsDirectControl|IsUncondControl|IsCall|IsMicroop|IsLastMicroop)
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_19: Timing CPU icache tick 19 scheduled @ 0
+      0: Event_19: Timing CPU icache tick 19 executed @ 0
+      0: system.cpu: A0 T0 : @__libc_start_main    : hint	                     
+      0: system.cpu: A0 T0 : @__libc_start_main. 0 :   HINT_NOP : fault   No Fault : No_OpClass :   flags=(IsMicroop|IsLastMicroop|IsFirstMicroop)
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_19: Timing CPU icache tick 19 scheduled @ 0
+      0: Event_19: Timing CPU icache tick 19 executed @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_21: Timing CPU dcache tick 21 scheduled @ 0
+      0: Event_21: Timing CPU dcache tick 21 executed @ 0
+      0: system.cpu: A0 T0 : @__libc_start_main+4    : push	r14                  
+      0: system.cpu: A0 T0 : @__libc_start_main+4. 0 :   PUSH_R : stis   r14, SS:[rsp + 0xfffffffffffffff8] : MemWrite :  D=0x0000000000000000 A=0x7fffffffee20  flags=(IsInteger|IsMemRef|IsStore|IsMicroop|IsDelayedCommit|IsFirstMicroop)
+      0: system.cpu: A0 T0 : @__libc_start_main+4. 1 :   PUSH_R : subi   rsp, rsp, 0x8 : IntAlu :  D=0x00007fffffffee20  flags=(IsInteger|IsMicroop|IsLastMicroop)
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_19: Timing CPU icache tick 19 scheduled @ 0
+      0: Event_19: Timing CPU icache tick 19 executed @ 0
+      0: system.cpu: A0 T0 : @__libc_start_main+6    : xor	eax, eax              
+      0: system.cpu: A0 T0 : @__libc_start_main+6. 0 :   XOR_R_R : xor   eax, eax, eax : IntAlu :  D=0x0000000000000000  flags=(IsInteger|IsCC|IsMicroop|IsLastMicroop|IsFirstMicroop)
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_19: Timing CPU icache tick 19 scheduled @ 0
+      0: Event_19: Timing CPU icache tick 19 executed @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_21: Timing CPU dcache tick 21 scheduled @ 0
+      0: Event_21: Timing CPU dcache tick 21 executed @ 0
+      0: system.cpu: A0 T0 : @__libc_start_main+8    : push	r13                  
+      0: system.cpu: A0 T0 : @__libc_start_main+8. 0 :   PUSH_R : stis   r13, SS:[rsp + 0xfffffffffffffff8] : MemWrite :  D=0x0000000000000000 A=0x7fffffffee18  flags=(IsInteger|IsMemRef|IsStore|IsMicroop|IsDelayedCommit|IsFirstMicroop)
+      0: system.cpu: A0 T0 : @__libc_start_main+8. 1 :   PUSH_R : subi   rsp, rsp, 0x8 : IntAlu :  D=0x00007fffffffee18  flags=(IsInteger|IsMicroop|IsLastMicroop)
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_19: Timing CPU icache tick 19 scheduled @ 0
+      0: Event_19: Timing CPU icache tick 19 executed @ 0
+      0: system.cpu: A0 T0 : @__libc_start_main+10    : mov	r13, r9               
+      0: system.cpu: A0 T0 : @__libc_start_main+10. 0 :   MOV_R_R : mov   r13, r13, r9 : IntAlu :  D=0x0000000000000000  flags=(IsInteger|IsMicroop|IsLastMicroop|IsFirstMicroop)
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_19: Timing CPU icache tick 19 scheduled @ 0
+      0: Event_19: Timing CPU icache tick 19 executed @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_21: Timing CPU dcache tick 21 scheduled @ 0
+      0: Event_21: Timing CPU dcache tick 21 executed @ 0
+      0: system.cpu: A0 T0 : @__libc_start_main+13    : push	r12                  
+      0: system.cpu: A0 T0 : @__libc_start_main+13. 0 :   PUSH_R : stis   r12, SS:[rsp + 0xfffffffffffffff8] : MemWrite :  D=0x0000000000000000 A=0x7fffffffee10  flags=(IsInteger|IsMemRef|IsStore|IsMicroop|IsDelayedCommit|IsFirstMicroop)
+      0: system.cpu: A0 T0 : @__libc_start_main+13. 1 :   PUSH_R : subi   rsp, rsp, 0x8 : IntAlu :  D=0x00007fffffffee10  flags=(IsInteger|IsMicroop|IsLastMicroop)
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_19: Timing CPU icache tick 19 scheduled @ 0
+      0: Event_19: Timing CPU icache tick 19 executed @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_19: Timing CPU icache tick 19 scheduled @ 0
+      0: Event_19: Timing CPU icache tick 19 executed @ 0
+      0: system.cpu: A0 T0 : @__libc_start_main+15    : mov	r12, r8               
+      0: system.cpu: A0 T0 : @__libc_start_main+15. 0 :   MOV_R_R : mov   r12, r12, r8 : IntAlu :  D=0x0000000000402de0  flags=(IsInteger|IsMicroop|IsLastMicroop|IsFirstMicroop)
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_19: Timing CPU icache tick 19 scheduled @ 0
+      0: Event_19: Timing CPU icache tick 19 executed @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_21: Timing CPU dcache tick 21 scheduled @ 0
+      0: Event_21: Timing CPU dcache tick 21 executed @ 0
+      0: system.cpu: A0 T0 : @__libc_start_main+18    : push	rbp                  
+      0: system.cpu: A0 T0 : @__libc_start_main+18. 0 :   PUSH_R : stis   rbp, SS:[rsp + 0xfffffffffffffff8] : MemWrite :  D=0x0000000000000000 A=0x7fffffffee08  flags=(IsInteger|IsMemRef|IsStore|IsMicroop|IsDelayedCommit|IsFirstMicroop)
+      0: system.cpu: A0 T0 : @__libc_start_main+18. 1 :   PUSH_R : subi   rsp, rsp, 0x8 : IntAlu :  D=0x00007fffffffee08  flags=(IsInteger|IsMicroop|IsLastMicroop)
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_19: Timing CPU icache tick 19 scheduled @ 0
+      0: Event_19: Timing CPU icache tick 19 executed @ 0
+      0: system.cpu: A0 T0 : @__libc_start_main+19    : mov	rbp, rcx              
+      0: system.cpu: A0 T0 : @__libc_start_main+19. 0 :   MOV_R_R : mov   rbp, rbp, rcx : IntAlu :  D=0x0000000000402d40  flags=(IsInteger|IsMicroop|IsLastMicroop|IsFirstMicroop)
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_19: Timing CPU icache tick 19 scheduled @ 0
+      0: Event_19: Timing CPU icache tick 19 executed @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_21: Timing CPU dcache tick 21 scheduled @ 0
+      0: Event_21: Timing CPU dcache tick 21 executed @ 0
+      0: system.cpu: A0 T0 : @__libc_start_main+22    : push	rbx                  
+      0: system.cpu: A0 T0 : @__libc_start_main+22. 0 :   PUSH_R : stis   rbx, SS:[rsp + 0xfffffffffffffff8] : MemWrite :  D=0x0000000000000000 A=0x7fffffffee00  flags=(IsInteger|IsMemRef|IsStore|IsMicroop|IsDelayedCommit|IsFirstMicroop)
+      0: system.cpu: A0 T0 : @__libc_start_main+22. 1 :   PUSH_R : subi   rsp, rsp, 0x8 : IntAlu :  D=0x00007fffffffee00  flags=(IsInteger|IsMicroop|IsLastMicroop)
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_19: Timing CPU icache tick 19 scheduled @ 0
+      0: Event_19: Timing CPU icache tick 19 executed @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_19: Timing CPU icache tick 19 scheduled @ 0
+      0: Event_19: Timing CPU icache tick 19 executed @ 0
+      0: system.cpu: A0 T0 : @__libc_start_main+23    : sub	rax, 0xe0             
+      0: system.cpu: A0 T0 : @__libc_start_main+23. 0 :   SUB_R_I : limm   t1, 0xe0 : IntAlu :  D=0x00000000000000e0  flags=(IsInteger|IsMicroop|IsDelayedCommit|IsFirstMicroop)
+      0: system.cpu: A0 T0 : @__libc_start_main+23. 1 :   SUB_R_I : sub   rsp, rsp, t1 : IntAlu :  D=0x0000000000000000  flags=(IsInteger|IsCC|IsMicroop|IsLastMicroop)
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_19: Timing CPU icache tick 19 scheduled @ 0
+      0: Event_19: Timing CPU icache tick 19 executed @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_19: Timing CPU icache tick 19 scheduled @ 0
+      0: Event_19: Timing CPU icache tick 19 executed @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_21: Timing CPU dcache tick 21 scheduled @ 0
+      0: Event_21: Timing CPU dcache tick 21 executed @ 0
+      0: system.cpu: A0 T0 : @__libc_start_main+30    : mov	DS:[rsp + 0x10], rdx  
+      0: system.cpu: A0 T0 : @__libc_start_main+30. 0 :   MOV_M_R : st   rdx, DS:[rsp + 0x10] : MemWrite :  D=0x00007fffffffee48 A=0x7fffffffed30  flags=(IsInteger|IsMemRef|IsStore|IsMicroop|IsLastMicroop|IsFirstMicroop)
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_19: Timing CPU icache tick 19 scheduled @ 0
+      0: Event_19: Timing CPU icache tick 19 executed @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_19: Timing CPU icache tick 19 scheduled @ 0
+      0: Event_19: Timing CPU icache tick 19 executed @ 0
+      0: system.cpu: A0 T0 : @__libc_start_main+35    : mov	rdi, 0                
+      0: system.cpu: A0 T0 : @__libc_start_main+35. 0 :   MOV_R_I : limm   rdx, 0  : IntAlu :  D=0x0000000000000000  flags=(IsInteger|IsMicroop|IsLastMicroop|IsFirstMicroop)
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_19: Timing CPU icache tick 19 scheduled @ 0
+      0: Event_19: Timing CPU icache tick 19 executed @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_21: Timing CPU dcache tick 21 scheduled @ 0
+      0: Event_21: Timing CPU dcache tick 21 executed @ 0
+      0: system.cpu: A0 T0 : @__libc_start_main+42    : mov	DS:[rsp + 0x18], rdi  
+      0: system.cpu: A0 T0 : @__libc_start_main+42. 0 :   MOV_M_R : st   rdi, DS:[rsp + 0x18] : MemWrite :  D=0x0000000000401730 A=0x7fffffffed38  flags=(IsInteger|IsMemRef|IsStore|IsMicroop|IsLastMicroop|IsFirstMicroop)
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_19: Timing CPU icache tick 19 scheduled @ 0
+      0: Event_19: Timing CPU icache tick 19 executed @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_19: Timing CPU icache tick 19 scheduled @ 0
+      0: Event_19: Timing CPU icache tick 19 executed @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_21: Timing CPU dcache tick 21 scheduled @ 0
+      0: Event_21: Timing CPU dcache tick 21 executed @ 0
+      0: system.cpu: A0 T0 : @__libc_start_main+47    : mov	DS:[rsp + 0xc], rsi   
+      0: system.cpu: A0 T0 : @__libc_start_main+47. 0 :   MOV_M_R : st   esi, DS:[rsp + 0xc] : MemWrite :  D=0x0000000000000001 A=0x7fffffffed2c  flags=(IsInteger|IsMemRef|IsStore|IsMicroop|IsLastMicroop|IsFirstMicroop)
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_19: Timing CPU icache tick 19 scheduled @ 0
+      0: Event_19: Timing CPU icache tick 19 executed @ 0
+      0: system.cpu: A0 T0 : @__libc_start_main+51    : test	rdx, rdx             
+      0: system.cpu: A0 T0 : @__libc_start_main+51. 0 :   TEST_R_R : and   t0, rdx, rdx : IntAlu :  D=0x0000000000000000  flags=(IsInteger|IsCC|IsMicroop|IsLastMicroop|IsFirstMicroop)
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 scheduled @ 0
+      0: system.mem_ctrl.wrapped_function_event: EventFunctionWrapped 9 executed @ 0
+      0: Event_19: Timing CPU icache tick 19 scheduled @ 0
+      0: Event_19: Timing CPU icache tick 19 executed @ 0
+      0: system.cpu: A0 T0 : @__libc_start_main+54    : jz	0x9                    
+      0: system.cpu: A0 T0 : @__libc_start_main+54. 0 :   JZ_I : rdip   t1, %ctrl153,  : IntAlu :  D=0x0000000000402118  flags=(IsInteger|IsMicroop|IsDelayedCommit|IsFirstMicroop)
+      0: system.cpu: A0 T0 : @__libc_start_main+54. 1 :   JZ_I : limm   t2, 0x9    : IntAlu :  D=0x0000000000000009  flags=(IsInteger|IsMicroop|IsDelayedCommit)

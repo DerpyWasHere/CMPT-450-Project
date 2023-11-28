@@ -1,37 +1,49 @@
 info: History mask: 4294967295
+warn: Sockets disabled, not accepting gdb connections
+warn: CoherentXBar system.interrupt_xbar has no snooping ports attached!
+warn: interrupt_xbar.master is deprecated. `master` is now called `mem_side_ports`
+warn: interrupt_xbar.slave is deprecated. `slave` is now called `cpu_side_ports`
+warn: interrupts.int_master is deprecated. `int_master` is now called `int_requestor`
+warn: interrupt_xbar.master is deprecated. `master` is now called `mem_side_ports`
+warn: interrupts.int_slave is deprecated. `int_slave` is now called `int_responder`
+warn: No dot file generated. Please install pydot to generate the dot file and pdf.
+info: Entering event queue @ 0.  Starting simulation...
+info: line 151
+info: line 152
+info: line 153
 gem5 has encountered a segmentation fault!
 
 --- BEGIN LIBC BACKTRACE ---
-build/X86/gem5.opt(+0xa77e50)[0x5586225e9e50]
-build/X86/gem5.opt(+0xa8c1f5)[0x5586225fe1f5]
-/lib/x86_64-linux-gnu/libpthread.so.0(+0x143c0)[0x7ff0ead253c0]
-build/X86/gem5.opt(+0x978a4c)[0x5586224eaa4c]
-build/X86/gem5.opt(+0x978dcf)[0x5586224eadcf]
-build/X86/gem5.opt(+0x66eb4a)[0x5586221e0b4a]
-build/X86/gem5.opt(+0x4d495f)[0x55862204695f]
-/lib/x86_64-linux-gnu/libpython3.8.so.1.0(+0x2a8748)[0x7ff0eafdc748]
-/lib/x86_64-linux-gnu/libpython3.8.so.1.0(_PyObject_MakeTpCall+0xab)[0x7ff0eafdcb2b]
-/lib/x86_64-linux-gnu/libpython3.8.so.1.0(+0x2a8df0)[0x7ff0eafdcdf0]
-/lib/x86_64-linux-gnu/libpython3.8.so.1.0(+0x74d6d)[0x7ff0eada8d6d]
-/lib/x86_64-linux-gnu/libpython3.8.so.1.0(_PyEval_EvalFrameDefault+0x7d86)[0x7ff0eadb0ef6]
-/lib/x86_64-linux-gnu/libpython3.8.so.1.0(+0x8006b)[0x7ff0eadb406b]
-/lib/x86_64-linux-gnu/libpython3.8.so.1.0(+0x2a8dba)[0x7ff0eafdcdba]
-/lib/x86_64-linux-gnu/libpython3.8.so.1.0(+0x74d6d)[0x7ff0eada8d6d]
-/lib/x86_64-linux-gnu/libpython3.8.so.1.0(_PyEval_EvalFrameDefault+0x7d86)[0x7ff0eadb0ef6]
-/lib/x86_64-linux-gnu/libpython3.8.so.1.0(+0x8006b)[0x7ff0eadb406b]
-/lib/x86_64-linux-gnu/libpython3.8.so.1.0(+0x2a8dba)[0x7ff0eafdcdba]
-/lib/x86_64-linux-gnu/libpython3.8.so.1.0(+0x74d6d)[0x7ff0eada8d6d]
-/lib/x86_64-linux-gnu/libpython3.8.so.1.0(_PyEval_EvalFrameDefault+0x7d86)[0x7ff0eadb0ef6]
-/lib/x86_64-linux-gnu/libpython3.8.so.1.0(+0x8006b)[0x7ff0eadb406b]
-/lib/x86_64-linux-gnu/libpython3.8.so.1.0(+0x2a8dba)[0x7ff0eafdcdba]
-/lib/x86_64-linux-gnu/libpython3.8.so.1.0(+0x74d6d)[0x7ff0eada8d6d]
-/lib/x86_64-linux-gnu/libpython3.8.so.1.0(_PyEval_EvalFrameDefault+0x7d86)[0x7ff0eadb0ef6]
-/lib/x86_64-linux-gnu/libpython3.8.so.1.0(+0x8006b)[0x7ff0eadb406b]
-/lib/x86_64-linux-gnu/libpython3.8.so.1.0(+0x2a8dba)[0x7ff0eafdcdba]
-/lib/x86_64-linux-gnu/libpython3.8.so.1.0(+0x74d6d)[0x7ff0eada8d6d]
-/lib/x86_64-linux-gnu/libpython3.8.so.1.0(_PyEval_EvalFrameDefault+0x7d86)[0x7ff0eadb0ef6]
-/lib/x86_64-linux-gnu/libpython3.8.so.1.0(+0x8006b)[0x7ff0eadb406b]
-/lib/x86_64-linux-gnu/libpython3.8.so.1.0(+0x74d6d)[0x7ff0eada8d6d]
-/lib/x86_64-linux-gnu/libpython3.8.so.1.0(_PyEval_EvalFrameDefault+0x7d86)[0x7ff0eadb0ef6]
-/lib/x86_64-linux-gnu/libpython3.8.so.1.0(_PyEval_EvalCodeWithName+0x8fb)[0x7ff0eaefee4b]
+build/X86/gem5.opt(+0x36ac60)[0x561afa76cc60]
+build/X86/gem5.opt(+0x37f005)[0x561afa781005]
+/lib/x86_64-linux-gnu/libpthread.so.0(+0x143c0)[0x7f3fa3bcc3c0]
+build/X86/gem5.opt(+0xcb0846)[0x561afb0b2846]
+build/X86/gem5.opt(+0xc82a89)[0x561afb084a89]
+build/X86/gem5.opt(+0x15b2d74)[0x561afb9b4d74]
+build/X86/gem5.opt(+0x15a8e1c)[0x561afb9aae1c]
+build/X86/gem5.opt(+0x15a9432)[0x561afb9ab432]
+build/X86/gem5.opt(+0x15a8320)[0x561afb9aa320]
+build/X86/gem5.opt(+0x15a9018)[0x561afb9ab018]
+build/X86/gem5.opt(+0x15a9432)[0x561afb9ab432]
+build/X86/gem5.opt(+0x15a8320)[0x561afb9aa320]
+build/X86/gem5.opt(+0x15a9018)[0x561afb9ab018]
+build/X86/gem5.opt(+0x372d5d)[0x561afa774d5d]
+build/X86/gem5.opt(+0x394868)[0x561afa796868]
+build/X86/gem5.opt(+0x39565d)[0x561afa79765d]
+build/X86/gem5.opt(+0xbb3570)[0x561afafb5570]
+build/X86/gem5.opt(+0x3f195f)[0x561afa7f395f]
+/lib/x86_64-linux-gnu/libpython3.8.so.1.0(+0x2a8748)[0x7f3fa3e83748]
+/lib/x86_64-linux-gnu/libpython3.8.so.1.0(_PyEval_EvalFrameDefault+0x8dd8)[0x7f3fa3c58f48]
+/lib/x86_64-linux-gnu/libpython3.8.so.1.0(_PyEval_EvalCodeWithName+0x8fb)[0x7f3fa3da5e4b]
+/lib/x86_64-linux-gnu/libpython3.8.so.1.0(_PyFunction_Vectorcall+0x94)[0x7f3fa3e83124]
+/lib/x86_64-linux-gnu/libpython3.8.so.1.0(+0x74d6d)[0x7f3fa3c4fd6d]
+/lib/x86_64-linux-gnu/libpython3.8.so.1.0(_PyEval_EvalFrameDefault+0x7d86)[0x7f3fa3c57ef6]
+/lib/x86_64-linux-gnu/libpython3.8.so.1.0(_PyEval_EvalCodeWithName+0x8fb)[0x7f3fa3da5e4b]
+/lib/x86_64-linux-gnu/libpython3.8.so.1.0(PyEval_EvalCodeEx+0x42)[0x7f3fa3da61d2]
+/lib/x86_64-linux-gnu/libpython3.8.so.1.0(PyEval_EvalCode+0x1f)[0x7f3fa3da65bf]
+/lib/x86_64-linux-gnu/libpython3.8.so.1.0(+0x1cfc01)[0x7f3fa3daac01]
+/lib/x86_64-linux-gnu/libpython3.8.so.1.0(+0x25f547)[0x7f3fa3e3a547]
+/lib/x86_64-linux-gnu/libpython3.8.so.1.0(+0x74d6d)[0x7f3fa3c4fd6d]
+/lib/x86_64-linux-gnu/libpython3.8.so.1.0(_PyEval_EvalFrameDefault+0x12fd)[0x7f3fa3c5146d]
+/lib/x86_64-linux-gnu/libpython3.8.so.1.0(_PyEval_EvalCodeWithName+0x8fb)[0x7f3fa3da5e4b]
 --- END LIBC BACKTRACE ---
