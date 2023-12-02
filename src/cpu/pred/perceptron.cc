@@ -60,39 +60,36 @@ Thus, the number of bits needed to represent a weight is one (for the sign bit) 
     What is thread pointer? -> unsure
 */
 
+#define DEBUG 1
+
 #include <limits.h>
 #include <inttypes.h>
 #include "cpu/pred/perceptron.hh"
 
 PerceptronBP::PerceptronBP(const PerceptronBPParams *params) : BPredUnit(params), 
       globalHistory(params->numThreads, 0),
-      weights(params->number_of_perceptrons, std::vector<int8_t>(params->number_of_weights, 0))
+      weights(params->number_of_perceptrons, 
+      std::vector<int8_t>(params->number_of_weights, 0))
 {
-    std::cout << "Constructor" << std::endl;
     number_of_perceptrons = params->number_of_perceptrons;
     number_of_weights = params->number_of_weights;
     global_history_bits = params->global_history_bits;
     history_mask = mask(global_history_bits);
-    inform("History mask: %ld\n", history_mask);
-    // std::vector<uint64_t> globalHistory; // Global history registers
-    // std::vector<std::vector<int8_t>> weights;
-    // for(int i = 0; i < number_of_perceptrons; i++)
-    // {
-    //     weights[i] = 
-    //     for(int j = 0; j < number_of_weights; j++)
-    //     {
-    //         weights[i][j] = 0;
-    //     }
-    // }
+
+    #ifdef DEBUG
+        inform("History mask: %ld\n", history_mask);
+    #endif
 }
 
-// Weight table lookup
-// Needs to return an index from 0 to (2^wt_size) for the first index in WT 
-// STEP 1 IN ALGO DETAILED IN 3.5 ABOVE 
+/*
+* Weight table lookup, returns modulus of pc with the number of perceptrons.
+*/
 uint64_t 
 PerceptronBP::weight_hash(Addr pc, uint32_t num_perceptron)
 {
-    std::cout << "Weight hash" << std::endl;
+    #ifdef DEBUG
+        inform("Hash for address %ld is %ld\n", pc, pc % num_perceptron);
+    #endif
     return pc % num_perceptron; // Take simple mod of wt_size
 }
 
