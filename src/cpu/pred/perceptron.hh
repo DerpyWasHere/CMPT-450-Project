@@ -7,9 +7,7 @@
 class PerceptronBP : public BPredUnit
 {
     private:
-        //bool *GHR;
-        //int8_t WT[1<<NUMBER_OF_WEIGHTS][WL];
-        uint8_t threshold = 0; // Dynamic threshold to compare aganist hard coded max in define 
+        uint32_t threshold; // Dynamic threshold to compare aganist hard coded max in define 
         
         std::vector<uint64_t> globalHistory; // Global history registers
         std::vector<std::vector<int8_t>> weights;
