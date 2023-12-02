@@ -757,5 +757,4 @@ class PerceptronBP(BranchPredictor):
 
     number_of_weights = Param.UInt32(10, "Number of weights for the perceptron")
     number_of_perceptrons = Param.UInt32(10, "Number of perceptrons for the predictor")
-    threshold = Param.UInt32(128, "Threshold for training the perceptrons")
     global_history_bits = Param.UInt32(32, "Bits used for global history")
