@@ -76,8 +76,11 @@ PerceptronBP::PerceptronBP(const PerceptronBPParams *params) : BPredUnit(params)
     global_history_bits = params->global_history_bits;
     history_mask = mask(global_history_bits);
 
+    // Taken from section 5.1 - Tuning the predictors
+    threshold = floor(1.93 * global_history_bits + 14);
+
     #ifdef DEBUG
-        inform("History mask: %ld\n", history_mask);
+        inform("History mask: %ld.\n", history_mask);
     #endif
 }
 
@@ -88,7 +91,7 @@ uint64_t
 PerceptronBP::weight_hash(Addr pc, uint32_t num_perceptron)
 {
     #ifdef DEBUG
-        inform("Hash for address %ld is %ld\n", pc, pc % num_perceptron);
+        inform("Hash for address %ld is %ld.\n", pc, pc % num_perceptron);
     #endif
     return pc % num_perceptron; // Take simple mod of wt_size
 }
@@ -127,7 +130,7 @@ bool
 PerceptronBP::lookup(ThreadID tid, Addr branch_addr, void * &bp_history)
 {
     #ifdef DEBUG
-        inform("Lookup performed for thread %d on address %ld\n", tid, branch_addr);
+        inform("Lookup performed for thread %d on address %ld.\n", tid, branch_addr);
     #endif
 
     // Choose perceptron from table
@@ -167,37 +170,53 @@ PerceptronBP::lookup(ThreadID tid, Addr branch_addr, void * &bp_history)
 
     return prediction;
 }
-
-// Called on unconditional branch instructions. Unconditional branches are always taken.
+/*
+* Called on unconditional branch instructions. Unconditional branches are always taken.
+*/
 void 
 PerceptronBP::uncondBranch(ThreadID tid, Addr br_pc, void* &bp_history)
 {
-    std::cout << "uncondBranch" << std::endl;
+    #ifdef DEBUG
+        inform("uncondBranch called on thread %d with address %ld.\n", tid, br_pc);
+    #endif
     BPHistory *hist = new BPHistory;
     hist->globalHistory = globalHistory[tid];
     hist->globalPredTaken = true;
     bp_history = static_cast<void*>(hist);
     updateGlobalHistTaken(tid);
 }
-
-// Called when there is a miss in the Branch Target buffer. Branch prediction does not know where
-// to jump and thus predict not taken. 
+/*
+* Called when there is a miss in the Branch Target buffer. Branch prediction does not know where
+* to jump and thus predicts not taken. 
+*/
 void 
 PerceptronBP::btbUpdate(ThreadID tid, Addr branch_addr, void* &bp_history)
 {
-    std::cout << "btbUpdate" << std::endl;
-    //BPHistory *hist = new BPHistory;
+    #ifdef DEBUG
+        inform("btbUpdate called on thread %d with address %ld.\n", tid, branch_addr);
+    #endif
     globalHistory[tid] &= history_mask & ~ULL(1);
 }
 
-// Update branch predictor counters. squashed implies whether update is called during a squash call.
-// This needs to update and tweak weight training model 
+/*
+* Update branch predictor counters. squashed implies whether update is called during a squash call.
+* This needs to update and tweak weight training model 
+*/
 void 
 PerceptronBP::update(ThreadID tid, Addr branch_addr, bool taken, void *bp_history,
                     bool squashed, const StaticInstPtr & inst, Addr corrTarget)
-// GHR and weight table is public so *bp_History isn't required i dont think 
 {
-    std::cout << "Update" << std::endl;
+    #ifdef DEBUG
+        inform("update called on thread %d with address %ld.\n", tid, branch_addr);
+        if(taken)
+            inform("\tThis prediction was taken.");
+        else inform("\tThis prediction was not taken.");
+        if(squashed)
+            inform("\tThis instruction was squashed.");
+        else inform("\tThis instruction was not squashed");
+    #endif
+
+    // Cast bp_history into our branch predictor history class.
     BPHistory *history = static_cast<BPHistory *>(bp_history);
 
     // If squash, undo history
@@ -206,6 +225,7 @@ PerceptronBP::update(ThreadID tid, Addr branch_addr, bool taken, void *bp_histor
         return;
     }
 
+    // Generate prediction
     uint64_t perceptron_index = weight_hash(branch_addr, number_of_weights);
     int32_t y = weights[perceptron_index][0];
     for(unsigned int i = 0; i < number_of_weights; i++)
@@ -215,25 +235,27 @@ PerceptronBP::update(ThreadID tid, Addr branch_addr, bool taken, void *bp_histor
         else y -= weights[perceptron_index][i]; // GHR[i] == 0 so -1
     }
 
-    //if(squashed)
+    int prediction = (y >= 0) ? 1 : -1;
 
     // if sign(yout) != t or |yout| < THRESHOLD then
         // for i := 0 to n do
         // wi := wi + txi
         // end for
     // end if
-    int t = 0;
-    if(taken) t = 1;
-    else t = -1;
+
+    int sign = 0;
+    if(taken) 
+        sign = 1;
+    else sign = -1;
 
     uint32_t index = weight_hash(branch_addr, number_of_weights);
-
-    if (lookup(tid, branch_addr, bp_history) != t || lookup(tid, branch_addr, bp_history) < threshold)
+    // Training algorithm taken from section 3.3 of Jimenez et al.
+    if (prediction != sign || abs(y) < threshold)
     {
-        for(unsigned int i = 0; i < number_of_weights; i++)
+        for(uint32_t i = 0; i < number_of_weights; i++)
         {
-            std::cout << i << std::endl;
-            weights[index][i] += t*weights[index][i];
+            inform("weight: %d, sign: %d, sign * weight: %d", weights[index][i], sign, sign * weights[index][i]);
+            weights[index][i] += sign;//*weights[index][i];
         }
     }
 
