@@ -93,34 +93,17 @@ PerceptronBP::weight_hash(Addr pc, uint32_t num_perceptron)
     return pc % num_perceptron; // Take simple mod of wt_size
 }
 
-// Resetting model. Do this to change config
-// void Reset_Predictor()
-// {
-//     for (int i = 0; i < (1<<number_of_weights); i++) 
-//     {
-//         for(int j = 0; j < WL; j++)
-//         {
-//             WT[i][j] = 0;
-//             WT[i][j] = 0;
-// 	    }
-//     }
-// }
-
-// no need for this function? -- remove later
-int8_t Perceptron_Output()
-{
-    std::cout << "Perceptron output" << std::endl;
-    // Get 10 (NUMBER_OF_WEIGHTS) inputs from GHR and dot it with weights
-    // If negative, not taken --> output -1
-    // If positive, taken --> output 1
-    return -1;
-}
+/*
+* PerceptronBP::updateGlobalHistTaken() and updateGLobalHistNotTaken are borrowed from tournament.cc and simply update the global history register.
+*/
 
 inline
 void
 PerceptronBP::updateGlobalHistTaken(ThreadID tid)
 {
-    std::cout << "Update history taken" << std::endl;
+    #ifdef DEBUG
+        inform("Register for %ld updated with taken.\n", tid);
+    #endif
     globalHistory[tid] = (globalHistory[tid] << 1) | 1;
     globalHistory[tid] = globalHistory[tid] & history_mask;
 }
@@ -129,44 +112,53 @@ inline
 void
 PerceptronBP::updateGlobalHistNotTaken(ThreadID tid)
 {
-    std::cout << "Update history not taken" << std::endl;
+    #ifdef DEBUG
+        inform("Register for %ld updated with not taken.\n", tid);
+    #endif
     globalHistory[tid] = (globalHistory[tid] << 1);
     globalHistory[tid] = globalHistory[tid] & history_mask;
 }
 
-// Returns taken or not taken based on a given branch and PC. 
-// Counter data + branch history are backed up in case we need to restore history/change PC.
-// STEP 2-4 IN 3.5 ALGO DETAILED ABOVE
-// I could be wrong about this just but i think we only need branchAddr and threadid, weight table is global
-// -S: you were right i think, p sure tid can be used to index a specific thread's weight table, see bi_mode.cc.
-// Also aren't perceptron_output and lookup doing the same thing? just predicting the branch? 
-// -S: lookup also has to record the history, so not quite AFAIK.
+/* 
+* Returns taken or not taken based on a given branch and PC. 
+* Counter data + branch history are backed up in case we need to restore history/change PC.
+*/
 bool
 PerceptronBP::lookup(ThreadID tid, Addr branch_addr, void * &bp_history)
 {
-    std::cout << "lookup" << std::endl;
-    uint64_t perceptron_index = weight_hash(branch_addr, number_of_weights); inform("line 151");
-    bool history = globalHistory[tid]; inform("line 152");
-    inform("line 153");
-    int32_t y = weights[perceptron_index][0];   inform("line 154");
-    // STEP 2-3
+    #ifdef DEBUG
+        inform("Lookup performed for thread %d on address %ld\n", tid, branch_addr);
+    #endif
+
+    // Choose perceptron from table
+    uint64_t perceptron_index = weight_hash(branch_addr, number_of_weights);
+    // Get global history
+    bool history = globalHistory[tid];
+    // Get initial prediction
+    int32_t y = weights[perceptron_index][0];
+
     // Compute dot product
-    for(unsigned int i = 0; i < number_of_weights; i++)
+    for(uint32_t i = 0; i < number_of_weights; i++)
     {
-        if(history == 1) {
-            y += weights[perceptron_index][i]; inform("line 160, %d", i);
-        } // GHR[i] == 1 so 1
-        else { y -= weights[perceptron_index][i]; inform("line 161, %d", i);} // GHR[i] == 0 so -1
+        if(history == 1) 
+        {
+            // history positive so we take the positive weighted sum
+            y += weights[perceptron_index][i]; 
+        } 
+        else { 
+            // history negative so we take the negative weighted sum
+            y -= weights[perceptron_index][i];
+        } 
     }
     
-    // STEP 4
+    // Make prediction
     bool prediction = (y >= 0) ? true : false;
 
     // Record history
-    BPHistory *hist = new BPHistory;    inform("line 168");
-    hist->globalHistory = globalHistory[tid];   inform("line 169");
-    hist->globalPredTaken = prediction;     inform("line 170");
-    bp_history = static_cast<void*>(hist);  inform("line 171");
+    BPHistory *hist = new BPHistory;
+    hist->globalHistory = globalHistory[tid];
+    hist->globalPredTaken = prediction;
+    bp_history = static_cast<void*>(hist);
 
     // Update history
     if(prediction)
