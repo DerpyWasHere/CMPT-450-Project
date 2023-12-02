@@ -255,7 +255,7 @@ PerceptronBP::update(ThreadID tid, Addr branch_addr, bool taken, void *bp_histor
         for(uint32_t i = 0; i < number_of_weights; i++)
         {
             inform("weight: %d, sign: %d, sign * weight: %d", weights[index][i], sign, sign * weights[index][i]);
-            weights[index][i] += sign;//*weights[index][i];
+            weights[index][i] += sign*weights[index][i];
         }
     }
 
