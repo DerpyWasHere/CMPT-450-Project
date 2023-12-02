@@ -138,6 +138,7 @@ PerceptronBP::lookup(ThreadID tid, Addr branch_addr, void * &bp_history)
     // Get global history
     bool history = globalHistory[tid];
     // Get initial prediction
+    inform("y initalized to %d with address %ld.\n", weights[perceptron_index][0], branch_addr);
     int32_t y = weights[perceptron_index][0];
 
     // Compute dot product
@@ -153,6 +154,7 @@ PerceptronBP::lookup(ThreadID tid, Addr branch_addr, void * &bp_history)
             y -= weights[perceptron_index][i];
         } 
     }
+    inform("after dot product, y is now %d. \n", weights[perceptron_index][0]);
     
     // Make prediction
     bool prediction = (y >= 0) ? true : false;
@@ -252,7 +254,11 @@ PerceptronBP::update(ThreadID tid, Addr branch_addr, bool taken, void *bp_histor
     // Training algorithm taken from section 3.3 of Jimenez et al.
     if (prediction != sign || abs(y) < threshold)
     {
-        for(uint32_t i = 0; i < number_of_weights; i++)
+        // Bias weight x0 always taken (1), doesn't depend on sign
+        weights[index][0] += 1*weights[index][0]; // For first weight
+
+        // Then start at x1
+        for(uint32_t i = 1; i < number_of_weights; i++)
         {
             inform("weight: %d, sign: %d, sign * weight: %d", weights[index][i], sign, sign * weights[index][i]);
             weights[index][i] += sign*weights[index][i];

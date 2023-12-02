@@ -101,8 +101,7 @@
                 "instShiftAmt": 2,
                 "numThreads": 1,
                 "number_of_perceptrons": 10,
-                "number_of_weights": 10,
-                "threshold": 128
+                "number_of_weights": 10
             },
             "checker": null,
             "clk_domain": "system.clk_domain",
