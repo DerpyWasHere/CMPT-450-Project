@@ -60,10 +60,10 @@ bool
 PerceptronBP::lookup(ThreadID tid, Addr branch_addr, void * &bp_history)
 {
     DPRINTF(Perceptron, "Lookup performed for thread %d on address %ld.\n", tid, branch_addr);
-    DPRINTF(Perceptron, "y initalized to %d with address %ld.\n", weights[perceptron_index][0], branch_addr);
 
     // Choose perceptron from table
     uint64_t perceptron_index = weight_hash(branch_addr, number_of_weights);
+    DPRINTF(Perceptron, "y initalized to %d with address %ld.\n", weights[perceptron_index][0], branch_addr);
     // Get global history
     uint64_t history = globalHistory[tid];
     // Get initial prediction
