@@ -1,8 +1,10 @@
 #include "base/bitfield.hh"
 #include "base/circular_queue.hh"
+#include "base/trace.hh"
 #include "base/types.hh"
 #include "cpu/pred/bpred_unit.hh"
 #include "params/PerceptronBP.hh"
+#include "debug/Perceptron.hh"
 
 class PerceptronBP : public BPredUnit
 {
@@ -30,7 +32,6 @@ class PerceptronBP : public BPredUnit
     public:
         struct BPHistory {
             uint64_t globalHistory;
-            bool globalPredTaken;
         };
 
         PerceptronBP(const PerceptronBPParams *params);
