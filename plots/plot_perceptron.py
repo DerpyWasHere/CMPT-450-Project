@@ -69,9 +69,9 @@ def plot_O3_W2K():
     ax.set_xticks(np.arange(len(benchmarks)) + .2, labels=benchmarks)
     
     plt.legend(loc=1, prop={'size': 8})
-    plt.title("LTAGE Branch Predictions vs Benchmark (O3_W2K)")
+    plt.title("Branch Predictions vs Benchmark (O3_W2K)")
 
-    plt.savefig("fig1LTAGE.png", format='png', dpi=600)
+    plt.savefig("fig1.png", format='png', dpi=600)
 
 def plot_O3_W256():
     fig = plt.figure()
@@ -85,9 +85,9 @@ def plot_O3_W256():
     ax.set_xticks(np.arange(len(benchmarks)) + .2, labels=benchmarks)
     
     plt.legend(loc=1, prop={'size': 8})
-    plt.title("LTAGE Branch Predictions vs Benchmark (O3_W256)")
+    plt.title("Branch Predictions vs Benchmark (O3_W256)")
 
-    plt.savefig("fig2LTAGE.png", format='png', dpi=600)
+    plt.savefig("fig2.png", format='png', dpi=600)
     
 def plot_Simple():
     fig = plt.figure()
@@ -101,9 +101,9 @@ def plot_Simple():
     ax.set_xticks(np.arange(len(benchmarks)) + .2, labels=benchmarks)
     
     plt.legend(loc=1, prop={'size': 8})
-    plt.title("LTAGE Branch Predictions vs Benchmark (Simple)")
+    plt.title("Branch Predictions vs Benchmark (Simple)")
 
-    plt.savefig("fig3LTAGE.png", format='png', dpi=600)
+    plt.savefig("fig3.png", format='png', dpi=600)
 
 def plot_DefaultO3():
     fig = plt.figure()
@@ -117,9 +117,9 @@ def plot_DefaultO3():
     ax.set_xticks(np.arange(len(benchmarks)) + .2, labels=benchmarks)
     
     plt.legend(loc=1, prop={'size': 8})
-    plt.title("LATGE Branch Predictions vs Benchmark (DefaultO3)")
+    plt.title("Branch Predictions vs Benchmark (DefaultO3)")
 
-    plt.savefig("fig4LTAGE.png", format='png', dpi=600)
+    plt.savefig("fig4.png", format='png', dpi=600)
 
 
 
