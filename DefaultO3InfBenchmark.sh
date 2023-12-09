@@ -17,3 +17,10 @@ srun build/X86/gem5.opt -re --outdir=$PWD/results/X86/run_ltage/DP1f/DefaultO3/I
 srun build/X86/gem5.opt -re --outdir=$PWD/results/X86/run_ltage/ED1/DefaultO3/Inf --debug-flags=Event,ExecAll --debug-file=trace.out --debug-start=0 gem5-config/run_ltage.py DefaultO3 Inf microbenchmark/ED1/bench.X86
 srun build/X86/gem5.opt -re --outdir=$PWD/results/X86/run_ltage/EI/DefaultO3/Inf --debug-flags=Event,ExecAll --debug-file=trace.out --debug-start=0 gem5-config/run_ltage.py DefaultO3 Inf microbenchmark/EI/bench.X86
 srun build/X86/gem5.opt -re --outdir=$PWD/results/X86/run_ltage/MI/DefaultO3/Inf --debug-flags=Event,ExecAll --debug-file=trace.out --debug-start=0 gem5-config/run_ltage.py DefaultO3 Inf microbenchmark/MI/bench.X86
+
+srun build/X86/gem5.opt -re --outdir=$PWD/results/X86/run_tournament/CCa/DefaultO3/Inf --debug-flags=Event,ExecAll --debug-file=trace.out --debug-start=0 gem5-config/run_tournament.py DefaultO3 Inf microbenchmark/CCa/bench.X86
+srun build/X86/gem5.opt -re --outdir=$PWD/results/X86/run_tournament/CCl/DefaultO3/Inf --debug-flags=Event,ExecAll --debug-file=trace.out --debug-start=0 gem5-config/run_tournament.py DefaultO3 Inf microbenchmark/CCl/bench.X86
+srun build/X86/gem5.opt -re --outdir=$PWD/results/X86/run_tournament/DP1f/DefaultO3/Inf --debug-flags=Event,ExecAll --debug-file=trace.out --debug-start=0 gem5-config/run_tournament.py DefaultO3 Inf microbenchmark/DP1f/bench.X86
+srun build/X86/gem5.opt -re --outdir=$PWD/results/X86/run_tournament/ED1/DefaultO3/Inf --debug-flags=Event,ExecAll --debug-file=trace.out --debug-start=0 gem5-config/run_tournament.py DefaultO3 Inf microbenchmark/ED1/bench.X86
+srun build/X86/gem5.opt -re --outdir=$PWD/results/X86/run_tournament/EI/DefaultO3/Inf --debug-flags=Event,ExecAll --debug-file=trace.out --debug-start=0 gem5-config/run_tournament.py DefaultO3 Inf microbenchmark/EI/bench.X86
+srun build/X86/gem5.opt -re --outdir=$PWD/results/X86/run_tournament/MI/DefaultO3/Inf --debug-flags=Event,ExecAll --debug-file=trace.out --debug-start=0 gem5-config/run_tournament.py DefaultO3 Inf microbenchmark/MI/bench.X86

@@ -17,3 +17,10 @@ srun build/X86/gem5.opt -re --outdir=$PWD/results/X86/run_ltage/DP1f/O3_W256/Slo
 srun build/X86/gem5.opt -re --outdir=$PWD/results/X86/run_ltage/ED1/O3_W256/Slow --debug-flags=Event,ExecAll --debug-file=trace.out --debug-start=0 gem5-config/run_ltage.py O3_W256 Slow microbenchmark/ED1/bench.X86
 srun build/X86/gem5.opt -re --outdir=$PWD/results/X86/run_ltage/EI/O3_W256/Slow --debug-flags=Event,ExecAll --debug-file=trace.out --debug-start=0 gem5-config/run_ltage.py O3_W256 Slow microbenchmark/EI/bench.X86
 srun build/X86/gem5.opt -re --outdir=$PWD/results/X86/run_ltage/MI/O3_W256/Slow --debug-flags=Event,ExecAll --debug-file=trace.out --debug-start=0 gem5-config/run_ltage.py O3_W256 Slow microbenchmark/MI/bench.X86
+
+srun build/X86/gem5.opt -re --outdir=$PWD/results/X86/run_tournament/CCa/O3_W256/Slow --debug-flags=Event,ExecAll --debug-file=trace.out --debug-start=0 gem5-config/run_tournament.py O3_W256 Slow microbenchmark/CCa/bench.X86
+srun build/X86/gem5.opt -re --outdir=$PWD/results/X86/run_tournament/CCl/O3_W256/Slow --debug-flags=Event,ExecAll --debug-file=trace.out --debug-start=0 gem5-config/run_tournament.py O3_W256 Slow microbenchmark/CCl/bench.X86
+srun build/X86/gem5.opt -re --outdir=$PWD/results/X86/run_tournament/DP1f/O3_W256/Slow --debug-flags=Event,ExecAll --debug-file=trace.out --debug-start=0 gem5-config/run_tournament.py O3_W256 Slow microbenchmark/DP1f/bench.X86
+srun build/X86/gem5.opt -re --outdir=$PWD/results/X86/run_tournament/ED1/O3_W256/Slow --debug-flags=Event,ExecAll --debug-file=trace.out --debug-start=0 gem5-config/run_tournament.py O3_W256 Slow microbenchmark/ED1/bench.X86
+srun build/X86/gem5.opt -re --outdir=$PWD/results/X86/run_tournament/EI/O3_W256/Slow --debug-flags=Event,ExecAll --debug-file=trace.out --debug-start=0 gem5-config/run_tournament.py O3_W256 Slow microbenchmark/EI/bench.X86
+srun build/X86/gem5.opt -re --outdir=$PWD/results/X86/run_tournament/MI/O3_W256/Slow --debug-flags=Event,ExecAll --debug-file=trace.out --debug-start=0 gem5-config/run_tournament.py O3_W256 Slow microbenchmark/MI/bench.X86

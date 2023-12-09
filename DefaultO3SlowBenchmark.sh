@@ -17,3 +17,10 @@ srun build/X86/gem5.opt -re --outdir=$PWD/results/X86/run_ltage/DP1f/DefaultO3/S
 srun build/X86/gem5.opt -re --outdir=$PWD/results/X86/run_ltage/ED1/DefaultO3/Slow --debug-flags=Event,ExecAll --debug-file=trace.out --debug-start=0 gem5-config/run_ltage.py DefaultO3 Slow microbenchmark/ED1/bench.X86
 srun build/X86/gem5.opt -re --outdir=$PWD/results/X86/run_ltage/EI/DefaultO3/Slow --debug-flags=Event,ExecAll --debug-file=trace.out --debug-start=0 gem5-config/run_ltage.py DefaultO3 Slow microbenchmark/EI/bench.X86
 srun build/X86/gem5.opt -re --outdir=$PWD/results/X86/run_ltage/MI/DefaultO3/Slow --debug-flags=Event,ExecAll --debug-file=trace.out --debug-start=0 gem5-config/run_ltage.py DefaultO3 Slow microbenchmark/MI/bench.X86
+
+srun build/X86/gem5.opt -re --outdir=$PWD/results/X86/run_tournament/CCa/DefaultO3/Slow --debug-flags=Event,ExecAll --debug-file=trace.out --debug-start=0 gem5-config/run_tournament.py DefaultO3 Slow microbenchmark/CCa/bench.X86
+srun build/X86/gem5.opt -re --outdir=$PWD/results/X86/run_tournament/CCl/DefaultO3/Slow --debug-flags=Event,ExecAll --debug-file=trace.out --debug-start=0 gem5-config/run_tournament.py DefaultO3 Slow microbenchmark/CCl/bench.X86
+srun build/X86/gem5.opt -re --outdir=$PWD/results/X86/run_tournament/DP1f/DefaultO3/Slow --debug-flags=Event,ExecAll --debug-file=trace.out --debug-start=0 gem5-config/run_tournament.py DefaultO3 Slow microbenchmark/DP1f/bench.X86
+srun build/X86/gem5.opt -re --outdir=$PWD/results/X86/run_tournament/ED1/DefaultO3/Slow --debug-flags=Event,ExecAll --debug-file=trace.out --debug-start=0 gem5-config/run_tournament.py DefaultO3 Slow microbenchmark/ED1/bench.X86
+srun build/X86/gem5.opt -re --outdir=$PWD/results/X86/run_tournament/EI/DefaultO3/Slow --debug-flags=Event,ExecAll --debug-file=trace.out --debug-start=0 gem5-config/run_tournament.py DefaultO3 Slow microbenchmark/EI/bench.X86
+srun build/X86/gem5.opt -re --outdir=$PWD/results/X86/run_tournament/MI/DefaultO3/Slow --debug-flags=Event,ExecAll --debug-file=trace.out --debug-start=0 gem5-config/run_tournament.py DefaultO3 Slow microbenchmark/MI/bench.X86

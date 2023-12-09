@@ -17,3 +17,10 @@ srun build/X86/gem5.opt -re --outdir=$PWD/results/X86/run_ltage/DP1f/Simple/Inf 
 srun build/X86/gem5.opt -re --outdir=$PWD/results/X86/run_ltage/ED1/Simple/Inf --debug-flags=Event,ExecAll --debug-file=trace.out --debug-start=0 gem5-config/run_ltage.py Simple Inf microbenchmark/ED1/bench.X86
 srun build/X86/gem5.opt -re --outdir=$PWD/results/X86/run_ltage/EI/Simple/Inf --debug-flags=Event,ExecAll --debug-file=trace.out --debug-start=0 gem5-config/run_ltage.py Simple Inf microbenchmark/EI/bench.X86
 srun build/X86/gem5.opt -re --outdir=$PWD/results/X86/run_ltage/MI/Simple/Inf --debug-flags=Event,ExecAll --debug-file=trace.out --debug-start=0 gem5-config/run_ltage.py Simple Inf microbenchmark/MI/bench.X86
+
+srun build/X86/gem5.opt -re --outdir=$PWD/results/X86/run_tournament/CCa/Simple/Inf --debug-flags=Event,ExecAll --debug-file=trace.out --debug-start=0 gem5-config/run_tournament.py Simple Inf microbenchmark/CCa/bench.X86
+srun build/X86/gem5.opt -re --outdir=$PWD/results/X86/run_tournament/CCl/Simple/Inf --debug-flags=Event,ExecAll --debug-file=trace.out --debug-start=0 gem5-config/run_tournament.py Simple Inf microbenchmark/CCl/bench.X86
+srun build/X86/gem5.opt -re --outdir=$PWD/results/X86/run_tournament/DP1f/Simple/Inf --debug-flags=Event,ExecAll --debug-file=trace.out --debug-start=0 gem5-config/run_tournament.py Simple Inf microbenchmark/DP1f/bench.X86
+srun build/X86/gem5.opt -re --outdir=$PWD/results/X86/run_tournament/ED1/Simple/Inf --debug-flags=Event,ExecAll --debug-file=trace.out --debug-start=0 gem5-config/run_tournament.py Simple Inf microbenchmark/ED1/bench.X86
+srun build/X86/gem5.opt -re --outdir=$PWD/results/X86/run_tournament/EI/Simple/Inf --debug-flags=Event,ExecAll --debug-file=trace.out --debug-start=0 gem5-config/run_tournament.py Simple Inf microbenchmark/EI/bench.X86
+srun build/X86/gem5.opt -re --outdir=$PWD/results/X86/run_tournament/MI/Simple/Inf --debug-flags=Event,ExecAll --debug-file=trace.out --debug-start=0 gem5-config/run_tournament.py Simple Inf microbenchmark/MI/bench.X86
