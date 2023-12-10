@@ -21,7 +21,6 @@ class PerceptronBP : public BPredUnit
         uint32_t wl;
 
         uint64_t weight_hash(Addr pc, uint32_t num_perceptrons);
-        bool predict();
 
         /** Updates global history as taken. */
         inline void updateGlobalHistTaken(ThreadID tid);
